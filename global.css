@@ -1,0 +1,17 @@
+:root{
+    /*Header*/
+    --header-bg-color: #E2FFE2;
+    --header-text-color: #00812D;
+    --header-font-family: "Inter";
+    --header-font-style: normal;
+
+    /*Body*/
+    --body-bg-color: #FFF9F1;
+    --body-color-texto-boton-catalogo: #FFF;
+    --body-color-boton-consultar-catalogo: #6CB987;
+    --body-color-texto-principal: #000000;
+    --body-color-debajo-texto-principal: #0000008c;
+    --body-button-border: #000000265;
+    --body-color-texto-catalogo: #00812D;
+    --body-color-texto-resaltar: #D90346;
+}
