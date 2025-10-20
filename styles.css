@@ -1,0 +1,10 @@
+@import url("./global.css");
+
+header{
+  background-color: var(--header-bg-color);
+  color: var(--header-text-color);
+}
+
+.cuadro-resumen-producto{
+  flex-flow: row, wrap;
+}
