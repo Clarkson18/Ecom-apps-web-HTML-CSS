@@ -2,58 +2,81 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Happy Source | Inicio</title>
     <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/logoHS.png">
+
+
   </head>
   <body class="landingPage">
     <div class="landingPageContainer">
-      <nav class="barraNavegacion">
-        <h2 id="logo">Happy Source</h2>
-        <ul>
-          <a href="#" id="op1">Mis pedidos</a>
-          <a href="carrito.html" id="op2">Carrito</a>
-          <a href="usuario.html" id="op3">Iniciar sesión</a>
-        </ul>
-      </nav>
+        <nav class="barraNavegacion">
+          <h2 id="logo"><a href="index.html" class="mainLink">Happy Source</a></h2>
+          <ul>
+            <a href="pedidos.html" id="op1">Mis pedidos</a>
+            <a href="carrito.html" id="op2">Carrito</a>
+          </ul>
+        </nav>
 
-      <div class="bannerContainer">
-        <div class="subtitulo">
-          <h1>Productos pensados para tu estilo de vida </h1>
-          <p>Explora nuestro catálogo de opciones saludables</p>
-          <div class="botones">
-            <button type="button" name="botonCatalogo" id="botonCatalogo">Consultar catálogo</button>
+        <div class="bannerContainer">
+          <div class="subtitulo">
+            <h1>Productos pensados para tu estilo de vida </h1>
+            <p>Explora nuestro catálogo de opciones saludables</p>
+            <div class="botones">
+              <button type="button" name="botonCatalogo" id="botonCatalogo" onclick="window.location.href='catalogo.html'">Consultar catálogo</button>
+              <button type="button" name="botonCarrito" id="botonCarrito">Carrito de compras</button>
+            </div>
+          </div>
 
-            <!-- Ahora navega a carrito.html al hacer clic, sin cambiar tus estilos -->
-            <button type="button" name="botonCarrito" id="botonCarrito"
-                    onclick="window.location.href='carrito.html'">
-              Carrito de compras
-            </button>
+          <div class="banner"><img src="../assets/banner_HappySource.jpg" alt="banner"></div>
+        </div>
+
+        <div class="muestraCatalogo">
+          <div class="titulo">
+              <h1>Explora nuestro extenso catálogo</h1>
+          </div>
+          <div class="subtitulo">
+              <p>Encuentra tus nuevos productos favoritos, nutridos de ingredientes que se preocupan tanto por tu bienestar como tú.<br>
+              <strong>100% veganos y libres de crueldad animal.</strong></p>
+          </div>
+
+          <div class="imagenesCatalogo">
+            <a href="#"><img src="https://lovewellness.com/cdn/shop/files/LW_PDP_HealthyV-Bundle_Silo.jpg?v=1722215326" alt="suplemento"></a>
+            <a href="#"><img src="https://myrite.co/cdn/shop/files/Rite-Gummies-Balance-Fruit_4479133e-c93e-4e28-9eb0-59ff0bbac5a4_2048x.jpg?v=1706786511" alt="gomitas"></a>
+            <a href="#"><img src="https://www.cureveda.com/cdn/shop/files/Pro_Chocolate--Pack_of_01_8a5b8b9d-ed4d-40d8-baf4-00a8bbd29592.jpg?v=1758626294&width=2048" alt="proteína"></a>
           </div>
         </div>
-
-        <div class="banner"><img src="../assets/banner_HappySource.jpg" alt="banner"></div>
-      </div>
-
-      <div class="muestraCatalogo">
-        <div class="titulo">
-          <h1>Explora nuestro extenso catálogo</h1>
-        </div>
-        <div class="subtitulo">
-          <p>Encuentra tus nuevos productos favoritos, nutridos de ingredientes que se preocupan tanto por tu bienestar como tú.<br>
-          <strong>100% veganos y libres de crueldad animal.</strong></p>
-        </div>
-
-        <div class="imagenesCatalogo">
-          <img src="https://lovewellness.com/cdn/shop/files/LW_PDP_HealthyV-Bundle_Silo.jpg?v=1722215326" alt="suplemento">
-          <img src="https://myrite.co/cdn/shop/files/Rite-Gummies-Balance-Fruit_4479133e-c93e-4e28-9eb0-59ff0bbac5a4_2048x.jpg?v=1706786511" alt="gomitas">
-          <img src="https://www.cureveda.com/cdn/shop/files/Pro_Chocolate--Pack_of_01_8a5b8b9d-ed4d-40d8-baf4-00a8bbd29592.jpg?v=1758626294&width=2048" alt="proteína">
-        </div>
-
-        <div class="footer">
-          <footer>Proyecto Aplicaciones Web 2025</footer>
-        </div>
-      </div>
     </div>
+
+    <footer>
+      <div class="contenidoFooter">
+        <div class="footerSection">
+          <h4>Happy Source</h4>
+          <p>Productos naturales, vitaminas y suplementos para cuidar tu bienestar cada día.</p>
+        </div>
+
+        <div class="footerSection">
+          <h4>Explorar</h4>
+          <a href="index.html">Inicio</a>
+          <a href="catalogo.html">Catálogo</a>
+          <a href="carrito.html">Carrito</a>
+          <a href="https://www.instagram.com/_islazzz/">Contacto</a>
+        </div>
+
+        <div class="footerSection">
+          <h4>Síguenos</h4>
+          <div class="social-icons">
+            <a href="#">🌿</a>
+            <a href="#">📘</a>
+            <a href="#">📸</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <p>© 2025 Happy Source. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+
   </body>
 </html>
-
