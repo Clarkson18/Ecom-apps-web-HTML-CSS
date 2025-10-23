@@ -3,7 +3,8 @@
 
 .landingPage {
   display: grid;
-  grid-row: auto auto auto;
+  flex-direction: column;
+  align-items: center;
   margin: 0px;
   font-family: "Inter";
   background-color: var(--body-bg-color);
@@ -26,9 +27,9 @@
   margin-top: 20px;
 }
 
-.mainLink{
-text-decoration: none;
-color: var(--header-text-color);
+.mainLink {
+  text-decoration: none;
+  color: var(--header-text-color);
 }
 
 .barraNavegacion > ul {
@@ -51,7 +52,6 @@ color: var(--header-text-color);
 .main-container {
   background-color: var(--body-bg-color);
   padding: 20px;
- 
 }
 
 .main-container > .barraNavegacion {
@@ -59,7 +59,7 @@ color: var(--header-text-color);
   height: auto;
 }
 
-.main-container > .div-formulario-inicio-sesion{
+.main-container > .div-formulario-inicio-sesion {
   background-color: var(--body-color-texto-boton-catalogo);
   margin: 20px;
   border-radius: 20px;
@@ -72,52 +72,54 @@ color: var(--header-text-color);
   color: var(--body-color-texto-principal);
 }
 
-
 .main-container > .div-formulario-inicio-sesion > .logo-usuario {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 2%;
-  width: auto;
-  height: 20%;
+  width: 100px;
+  height: auto;
 }
 
-.formulario-inicio-sesion{
+.formulario-inicio-sesion {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.seccion-correo, .seccion-password{
- font-weight: bold;
-font-family: var(--header-font-family);
+.seccion-correo,
+.seccion-password {
+  font-weight: bold;
+  font-family: var(--header-font-family);
+  text-align: center;
 }
 
 input[type="text"],
 input[type="password"] {
   width: 100%;
   padding: 10px 15px;
-  border: 1px solid var(--body-grey-border); 
-  border-radius: 20px; 
+  border: 1px solid var(--body-grey-border);
+  border-radius: 20px;
   font-size: 1em;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
 .boton-iniciar-sesion {
-  margin-top: 20px; 
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .boton-iniciar-sesion button {
-  background-color: var(--body-color-boton-consultar-catalogo); 
+  background-color: var(--body-color-boton-consultar-catalogo);
   color: var(--body-color-texto-principal);
   font-size: 1.1em;
   font-weight: bold;
   padding: 10px 30px;
   border: none;
   border-radius: 30px;
-  transition: background-color 0.3s ease; 
+  transition: background-color 0.3s ease;
 }
 
 .boton-iniciar-sesion button:hover {
-  background-color: #99d66f; 
+  background-color: var(--body-button-hover);
 }
