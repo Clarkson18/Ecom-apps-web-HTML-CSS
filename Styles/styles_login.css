@@ -48,3 +48,36 @@ color: var(--header-text-color);
   transition: 0.5s;
 }
 
+.main-container {
+  background-color: var(--body-bg-color);
+  padding: 20px;
+ 
+}
+
+.main-container > .barraNavegacion {
+  width: 100%;
+  height: auto;
+}
+
+.main-container > .div-formulario-inicio-sesion{
+  background-color: white;
+  margin: 20px;
+  border-radius: 20px;
+}
+
+.main-container > .div-formulario-inicio-sesion > .titulo {
+  text-align: center;
+  font-family: var(--header-font-family);
+  font-size: 2em;
+  color: var(--body-color-texto-principal);
+}
+
+
+.main-container > .div-formulario-inicio-sesion > .logo-usuario {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2%;
+  width: auto;
+  height: 20%;
+}
