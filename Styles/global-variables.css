@@ -5,7 +5,7 @@
 
 :root{
   --backgroundColor: #171616;
-  --highlight: #2A8493;
+  --highlight: #288AD4;
   --backgroundDiv:#00a896;
   --happySourceGreen:#E2FFE2;
   --almostWhite:#FDFFFA;
@@ -13,6 +13,7 @@
   --lightGreen:#EBFFEB;
   --darkGreen:#0B4A0B;
   --fontColorForm:#7FB57F;
+  --lightBrown:#9C826D;
   font-family: 'Arimo';
   margin: 0px;
   padding: 0px;
