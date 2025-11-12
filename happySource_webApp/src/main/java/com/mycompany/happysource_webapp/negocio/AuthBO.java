@@ -4,17 +4,21 @@
  */
 package com.mycompany.happysource_webapp.negocio;
 
+import com.mycompany.happysource_webapp.dominio.UsuarioDTO;
+
 /**
  *
  * @author abrilislas
  */
 public class AuthBO {
-    
-    public UsuarioDTO iniciarSesion(String username, String Correo, String password){
-        
-        if()
-    
-    
+
+    public UsuarioDTO iniciarSesion(String username, String Correo, String password) {
+
+        if (true) {
+
+            return new UsuarioDTO();
+        }
+        return new UsuarioDTO();
     }
-    
+
 }
