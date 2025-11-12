@@ -9,5 +9,11 @@ package com.mycompany.happysource_webapp.persistencia;
  * @author vv094
  */
 public class Usuario {
+    private String nombre;
+    private TipoUsuario tipoUsuario;
+    private String correoElectronico;
+    private String telefono;
+    private String password;
+    private String direcccion;
     
 }

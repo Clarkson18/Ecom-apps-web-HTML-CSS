@@ -9,5 +9,9 @@ package com.mycompany.happysource_webapp.persistencia;
  * @author vv094
  */
 public class Review {
-    
+   private Usuario usuario;
+   private String descripcion;
+   private boolean calificacion;
+   private Producto producto;
+   
 }
