@@ -12,7 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Happy Source | Carrito de Compras</title>
 <link rel="stylesheet" href="../styles/styles.css">
-<link rel="icon" type="image/png" sizes="32x32" href="../assets/logoHS.png">
+<%@include file="fragmentos/icon.jspf" %> 
 <style>
   :root{
     --brand:#16a34a; --header:#EAF9E6; --header-border:#CDEFC5;

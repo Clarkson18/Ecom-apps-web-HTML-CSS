@@ -12,7 +12,7 @@
     <meta charset="utf-8">
     <title>Happy Source | Producto</title>
     <link rel="stylesheet" href="../Styles/styles.css">
-    <link rel="icon" type="image/png" sizes="32x32" href="../assets/logoHS.png">
+    <%@include file="fragmentos/icon.jspf" %> 
   </head>
 
   <body>

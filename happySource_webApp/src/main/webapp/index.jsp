@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <title>Happy Source | Inicio</title>
     <link rel="stylesheet" href="../styles/styles.css">
-    <link rel="icon" type="image/png" sizes="32x32" href="../assets/logoHS.png">
+    <%@include file="fragmentos/header.jspf" %> 
 
 
   </head>
