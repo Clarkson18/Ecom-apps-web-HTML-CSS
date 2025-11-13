@@ -1,4 +1,4 @@
-package com.mycompany.happysource_webapp;
+package com.happysource_webapp_;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

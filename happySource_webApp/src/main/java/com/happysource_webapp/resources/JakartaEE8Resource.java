@@ -1,4 +1,4 @@
-package com.mycompany.happysource_webapp.resources;
+package com.happysource_webapp.resources;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
