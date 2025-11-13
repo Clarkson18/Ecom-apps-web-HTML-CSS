@@ -8,6 +8,6 @@ package com.mycompany.happysource_webapp.Interfaces;
  *
  * @author vv094
  */
-public interface IAdministradorDAO {
+public interface IUsuariosDAO {
     
 }

@@ -4,10 +4,12 @@
  */
 package com.mycompany.happysource_webapp.Interfaces;
 
+import com.mycompany.happysource_webapp.dominio.AdminDTO;
+
 /**
  *
  * @author vv094
  */
-public interface IUsuarioDAO {
-    
+public interface IAdministradoresDAO {
+    public AdminDTO loginAdmin(String user, String pass);
 }
