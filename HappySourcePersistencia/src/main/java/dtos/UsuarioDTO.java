@@ -77,6 +77,10 @@ public class UsuarioDTO {
         this.direcciones = direcciones;
     }
     
+    public void addDireccion(String direccion){
+        this.direcciones.add(direccion);
+    }
+    
     
 }
 
