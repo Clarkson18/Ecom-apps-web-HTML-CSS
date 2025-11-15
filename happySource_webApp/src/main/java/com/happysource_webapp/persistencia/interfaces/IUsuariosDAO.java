@@ -19,6 +19,6 @@ public interface IUsuariosDAO {
     
     void eliminarUsuario();
     
-    //List<UsuarioDTO> consultarUsuarios();
+    List<UsuarioDTO> consultarUsuarios();
     
 }

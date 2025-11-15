@@ -4,33 +4,19 @@
  */
 package com.happysource_webapp.persistencia.dao;
 
-import com.happysource_webapp.conexion.ConexionMongoDB;
 import com.happysource_webapp.dominio.UsuarioDTO;
 import com.happysource_webapp.persistencia.interfaces.IUsuariosDAO;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
-import org.bson.Document;
+import java.util.List;
 
 /**
  *
  * @author abrilislas
  */
 public class UsuariosDAO implements IUsuariosDAO {
-    
-    private final MongoCollection<Document> coleccion;
-    
-    public UsuariosDAO() {
-        
-        MongoDatabase db = ConexionMongoDB.getConexion();
-        coleccion = db.getCollection("usuarios");
-    }
-
 
     @Override
     public void registrarUsuario(UsuarioDTO usuarioDTO) {
-        
-        
-        
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
@@ -42,5 +28,11 @@ public class UsuariosDAO implements IUsuariosDAO {
     public void eliminarUsuario() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    @Override
+    public List<UsuarioDTO> consultarUsuarios() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
     
 }
