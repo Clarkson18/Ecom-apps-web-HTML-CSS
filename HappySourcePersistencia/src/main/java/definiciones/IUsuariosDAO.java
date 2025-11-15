@@ -1,0 +1,23 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
+ */
+package definiciones;
+
+import dtos.UsuarioDTO;
+import java.util.List;
+
+/**
+ *
+ * @author vv094
+ */
+public interface IUsuariosDAO {
+    void registrarUsuario(UsuarioDTO usuarioDTO);
+    
+    void actualizarUsuario();
+    
+    void eliminarUsuario();
+    
+    List<UsuarioDTO> consultarUsuarios();
+    
+}
