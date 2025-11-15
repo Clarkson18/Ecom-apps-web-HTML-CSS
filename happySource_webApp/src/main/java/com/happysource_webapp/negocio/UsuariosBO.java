@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.happysource_webapp.persistencia;
+package com.happysource_webapp.negocio;
 
 /**
  *
- * @author vv094
+ * @author abrilislas
  */
-public class Administrador {
+public class UsuariosBO {
     
 }

@@ -1,10 +1,17 @@
+<%-- 
+    Document   : iniciarSesion
+    Created on : Nov 13, 2025, 5:02:09 PM
+    Author     : abrilislas
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title>Happy Source | Iniciar sesión</title>
     <link rel="stylesheet" href="../Styles/forms.css">
-    <!-- <%@include file="fragmentos/header.jspf" %> -->
+    <%@include file="fragmentos/icon.jspf" %>
   </head>
 
   <body class="iniciarSesion">
@@ -28,7 +35,6 @@
       </div>
     </div>
 
-
-
   </body>
 </html>
+

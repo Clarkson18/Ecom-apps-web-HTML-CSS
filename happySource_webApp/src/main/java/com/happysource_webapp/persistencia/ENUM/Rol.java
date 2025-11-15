@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Enum.java to edit this template
  */
-package com.happysource_webapp.persistencia;
+package com.happysource_webapp.persistencia.ENUM;
 
 /**
  *
- * @author vv094
+ * @author abrilislas
  */
-public enum TipoUsuario {
+public enum Rol {
     CLIENTE,
-    ADMINISTRADOR
+    ADMIN
 }

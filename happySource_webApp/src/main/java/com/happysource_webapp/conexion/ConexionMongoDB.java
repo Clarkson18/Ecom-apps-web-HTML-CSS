@@ -14,10 +14,13 @@ import com.mongodb.client.MongoDatabase;
  */
 public class ConexionMongoDB {
     
+    
+    
     private static final String URI = "mongodb://localhost:27017"; 
     private static final String DB_NAME = "HappySource_DATABASE";
     private static MongoClient cliente = null;
-
+    
+    //singleton
     public static MongoDatabase getConexion() {
         if (cliente == null) {
             cliente = MongoClients.create(URI);
