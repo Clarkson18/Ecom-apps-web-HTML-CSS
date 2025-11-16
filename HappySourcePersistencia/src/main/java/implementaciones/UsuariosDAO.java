@@ -41,18 +41,19 @@ public class UsuariosDAO implements IUsuariosDAO {
     }
 
     @Override
-    public void registrarUsuario(UsuarioDTO usuarioDTO) {
-
-    }
-
-    @Override
-    public void actualizarUsuario() {
+    public Usuario registrarUsuario(UsuarioDTO usuarioDTO) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from
                                                                        // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void eliminarUsuario() {
+    public Usuario actualizarUsuario() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from
+                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Usuario eliminarUsuario() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from
                                                                        // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }

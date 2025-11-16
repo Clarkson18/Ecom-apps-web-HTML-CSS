@@ -1,5 +1,7 @@
 package entidades;
 
+import org.bson.types.ObjectId;
+
 import Enumeradores.Rol;
 
 public class Usuario {
@@ -8,6 +10,7 @@ public class Usuario {
     private String contraseña;
     private String telefono;
     private String direccion;
+    private ObjectId id;
     private Rol rol;
 
     public Usuario(String nombre, String correo, String contraseña, String telefono, String direccion, Rol rol) {
@@ -67,4 +70,11 @@ public class Usuario {
         this.rol = rol;
     }
 
+    public ObjectId getId() {
+        return id;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
+    }
 }

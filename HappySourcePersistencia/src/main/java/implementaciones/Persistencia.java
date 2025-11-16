@@ -6,7 +6,13 @@ package implementaciones;
 
 import definiciones.IPersistencia;
 import definiciones.IUsuariosDAO;
+import dtos.AdminLogueadoDTO;
 import dtos.UsuarioDTO;
+import entidades.Usuario;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+import utils.PassManager;
+
 import java.util.List;
 
 /**
@@ -39,6 +45,32 @@ public class Persistencia implements IPersistencia {
     @Override
     public List<UsuarioDTO> consultarUsuarios() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public AdminLogueadoDTO loginAdmin(String correo, String pass) {
+        Usuario usuario = usuariosDAO.getUsuarioCorreo(correo);
+
+        if (usuario == null) {
+            throw new IllegalArgumentException("Usuario no encontrado");
+        }
+
+        String password = usuario.getContraseña();
+
+        try {
+            if (PassManager.verificarPassword(pass, password) && usuario.getRol().equals("ADMIN")) {
+                return new AdminLogueadoDTO(usuario.getNombre(), usuario.getCorreo(), usuario.getId().toString(), usuario.getRol());
+            } else {
+                throw new IllegalArgumentException("Credenciales incorrectas");
+
+            }
+        } catch (NoSuchAlgorithmException ex) {
+            System.getLogger(Persistencia.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+            throw new IllegalArgumentException("Credenciales incorrectas");
+        } catch (InvalidKeySpecException ex) {
+            System.getLogger(Persistencia.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+            throw new IllegalArgumentException("Credenciales incorrectas");
+        }
     }
 
 }
