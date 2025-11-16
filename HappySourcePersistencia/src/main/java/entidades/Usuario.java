@@ -1,16 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package entidades;
 
 import Enumeradores.Rol;
 
-/**
- *
- * @author vv094
- */
-public class UsuarioAdmin {
+public class Usuario {
     private String nombre;
     private String correo;
     private String contraseña;
@@ -18,7 +10,7 @@ public class UsuarioAdmin {
     private String direccion;
     private Rol rol;
 
-    public UsuarioAdmin(String nombre, String correo, String contraseña, String telefono, String direccion, Rol rol) {
+    public Usuario(String nombre, String correo, String contraseña, String telefono, String direccion, Rol rol) {
         this.nombre = nombre;
         this.correo = correo;
         this.contraseña = contraseña;
@@ -74,6 +66,5 @@ public class UsuarioAdmin {
     public void setRol(Rol rol) {
         this.rol = rol;
     }
-
 
 }

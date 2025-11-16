@@ -6,6 +6,8 @@ package definiciones;
 
 import dtos.AdminLogueadoDTO;
 import dtos.UsuarioDTO;
+import entidades.Usuario;
+
 import java.util.List;
 
 /**
@@ -19,8 +21,8 @@ public interface IUsuariosDAO {
     
     void eliminarUsuario();
     
-    List<UsuarioDTO> consultarUsuarios();
+    List<Usuario> consultarUsuarios();
     
-    AdminLogueadoDTO loginAdmin(String correo, String contraseña);
+    Usuario getUsuarioCorreo(String correo);
 
 }
