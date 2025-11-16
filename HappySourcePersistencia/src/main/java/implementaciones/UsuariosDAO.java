@@ -8,6 +8,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import conexion.ConexionMongoDB;
 import definiciones.IUsuariosDAO;
+import dtos.AdminLogueadoDTO;
 import dtos.UsuarioDTO;
 import java.util.List;
 import org.bson.Document;
@@ -21,7 +22,6 @@ public class UsuariosDAO implements IUsuariosDAO{
     private final MongoCollection<Document> coleccion;
     
     public UsuariosDAO() {
-        
         MongoDatabase db = ConexionMongoDB.getConexion();
         coleccion = db.getCollection("usuarios");
     }
@@ -29,8 +29,6 @@ public class UsuariosDAO implements IUsuariosDAO{
 
     @Override
     public void registrarUsuario(UsuarioDTO usuarioDTO) {
-        
-        
         
     }
 
@@ -47,6 +45,13 @@ public class UsuariosDAO implements IUsuariosDAO{
     @Override
     public List<UsuarioDTO> consultarUsuarios() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+
+    @Override
+    public AdminLogueadoDTO loginAdmin(String correo, String contraseña) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'loginAdmin'");
     }
     
 }
