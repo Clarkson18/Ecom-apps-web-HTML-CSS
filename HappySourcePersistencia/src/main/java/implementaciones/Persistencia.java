@@ -4,7 +4,7 @@
  */
 package implementaciones;
 
-import definiciones.IPersistencia;
+import definiciones.IUsuarios;
 import definiciones.IUsuariosDAO;
 import dtos.AdminLogueadoDTO;
 import dtos.UsuarioDTO;
@@ -19,7 +19,7 @@ import java.util.List;
  *
  * @author vv094
  */
-public class Persistencia implements IPersistencia {
+public class Persistencia implements IUsuarios {
 
     private final IUsuariosDAO usuariosDAO;
 
