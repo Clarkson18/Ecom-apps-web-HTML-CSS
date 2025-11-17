@@ -28,7 +28,7 @@ public class UsuariosDAO implements IUsuariosDAO {
     private final String CAMPO_CORREO = "correo";
     private final String CAMPO_CONTRASEÑA = "contraseña";
     private final String CAMPO_TELEFONO = "telefono";
-    private final String CAMPO_DIRECCION = "direccion";
+    private final String CAMPO_DIRECCION = "direcciones";
     private final String CAMPO_ROL = "rol";
 
     private static UsuariosDAO instance;    
@@ -60,8 +60,9 @@ public class UsuariosDAO implements IUsuariosDAO {
 
     @Override
     public List<Usuario> consultarUsuarios() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from
-                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        MongoCollection coleccion = ConexionMongoDB.getConexion();
+        List<Usuario> usuarios = coleccion.find().into(new ArrayList<Usuario>());
+        return usuarios;
     }
 
     @Override
