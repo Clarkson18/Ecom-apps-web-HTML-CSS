@@ -15,23 +15,29 @@ import java.util.List;
  * @author abrilislas
  */
 public class PedidoDTO {
-    
-    private Usuario usuario;
-    public String direccionEnvio; 
-    public EstadoEnvio estadoEnvio;
-    public List<Producto> listaProductos;
-    public double precioTotalEnvio;
-    public LocalDateTime fechaEntrega;
-    public LocalDateTime fechaPedido;
 
-    public PedidoDTO(Usuario usuario, String direccionEnvio, List<Producto> listaProductos, double precioTotalEnvio, LocalDateTime fechaPedido) {
+    private Usuario usuario;
+    private String direccionEnvio;
+    private EstadoEnvio estadoEnvio;
+    private List<Producto> listaProductos;
+    private double precioTotalEnvio;
+    private LocalDateTime fechaEntrega;
+    private LocalDateTime fechaPedido;
+    private String id;
+
+    public PedidoDTO(Usuario usuario, String direccionEnvio, EstadoEnvio estadoEnvio, List<Producto> listaProductos, double precioTotalEnvio, LocalDateTime fechaEntrega, LocalDateTime fechaPedido, String id) {
         this.usuario = usuario;
         this.direccionEnvio = direccionEnvio;
+        this.estadoEnvio = estadoEnvio;
         this.listaProductos = listaProductos;
         this.precioTotalEnvio = precioTotalEnvio;
+        this.fechaEntrega = fechaEntrega;
         this.fechaPedido = fechaPedido;
+        this.id = id;
     }
 
+    
+    
     public Usuario getUsuario() {
         return usuario;
     }
@@ -87,8 +93,13 @@ public class PedidoDTO {
     public void setFechaPedido(LocalDateTime fechaPedido) {
         this.fechaPedido = fechaPedido;
     }
-    
-    
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
 }
-
-

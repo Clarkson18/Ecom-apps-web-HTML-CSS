@@ -6,6 +6,7 @@ package implementaciones;
 
 import definiciones.IUsuariosDAO;
 import dtos.UsuarioLogueadoDTO;
+import dtos.PedidoDTO;
 import dtos.ProductoDTO;
 import dtos.UsuarioDTO;
 import entidades.Usuario;
@@ -15,9 +16,12 @@ import utils.PassManager;
 
 import java.util.List;
 
+import Enumeradores.EstadoEnvio;
+import adaptadores.PedidoAdapter;
 import adaptadores.ProductoAdapter;
 import definiciones.IPersistencia;
 import definiciones.IProductoDAO;
+import entidades.Pedido;
 import entidades.Producto;
 
 /**
@@ -119,6 +123,31 @@ public class Persistencia implements IPersistencia {
     public ProductoDTO obtenerProductoPorId(String id) {
         Producto producto = productoDAO.obtenerProductoPorId(id);
         return ProductoAdapter.toDTO(producto);
+    }
+
+    @Override
+    public PedidoDTO actualizarEstadoPedido(String idPedido, EstadoEnvio nuevoEstado) {
+        Pedido pedidoActualizado = new PedidosDAO().actualizarEstadoPedido(idPedido, nuevoEstado);
+        PedidoDTO pedidoDTO = PedidoAdapter.toDTO(pedidoActualizado);
+        return pedidoDTO;
+    }
+
+    @Override
+    public List<PedidoDTO> consultarPedidos(String idUsuario) {
+       List<Pedido> pedidos = new PedidosDAO().consultarPedidos(idUsuario);
+       return PedidoAdapter.toDTOList(pedidos);
+    }
+
+    @Override
+    public PedidoDTO crearPedido(Pedido pedido) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'crearPedido'");
+    }
+
+    @Override
+    public PedidoDTO obtenerPedidoPorId(String idPedido) {
+        Pedido pedido = new PedidosDAO().obtenerPedidoPorId(idPedido);
+        return PedidoAdapter.toDTO(pedido);
     }
 
 }

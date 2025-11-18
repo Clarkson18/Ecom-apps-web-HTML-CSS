@@ -5,10 +5,13 @@
 package definiciones;
 
 import dtos.UsuarioLogueadoDTO;
-import entidades.Producto;
+import entidades.Pedido;
+import dtos.PedidoDTO;
 import dtos.ProductoDTO;
 import dtos.UsuarioDTO;
 import java.util.List;
+
+import Enumeradores.EstadoEnvio;
 
 /**
  *
@@ -32,4 +35,10 @@ public interface IPersistencia {
     ProductoDTO actualizarProducto(ProductoDTO productoDTO);
     ProductoDTO eliminarProducto(ProductoDTO productoDTO);
     ProductoDTO obtenerProductoPorId(String id);
+
+    //Pedido methods
+    public PedidoDTO actualizarEstadoPedido(String idPedido, EstadoEnvio nuevoEstado);
+    public List<PedidoDTO> consultarPedidos(String idUsuario);
+    public PedidoDTO crearPedido(Pedido pedido);
+    public PedidoDTO obtenerPedidoPorId(String idPedido);
 }

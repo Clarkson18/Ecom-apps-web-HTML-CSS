@@ -4,10 +4,110 @@
  */
 package entidades;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
+import org.bson.codecs.jsr310.LocalDateCodec;
+import org.bson.codecs.jsr310.LocalDateTimeCodec;
+
+import Enumeradores.EstadoEnvio;
+
 /**
  *
  * @author vv094
  */
 public class Pedido {
-    
+
+    private Usuario usuario;
+    private String direccionEnvio;
+    private EstadoEnvio estadoEnvio;
+    private List<Producto> listaProductos;
+    private double precioTotalEnvio;
+    private LocalDateTime fechaEntrega;
+    private LocalDateTime fechaPedido;
+    private String id;
+
+    public Pedido(Usuario usuario, String direccionEnvio, List<Producto> listaProductos, double precioTotalEnvio) {
+        this.usuario = usuario;
+        this.direccionEnvio = direccionEnvio;
+        this.listaProductos = listaProductos;
+        this.precioTotalEnvio = precioTotalEnvio;
+        this.fechaPedido = LocalDateTime.now();
+    }
+
+    public Pedido(Usuario usuario, String direccionEnvio, EstadoEnvio estadoEnvio, List<Producto> listaProductos, double precioTotalEnvio, LocalDateTime fechaEntrega, LocalDateTime fechaPedido, String id) {
+        this.usuario = usuario;
+        this.direccionEnvio = direccionEnvio;
+        this.estadoEnvio = estadoEnvio;
+        this.listaProductos = listaProductos;
+        this.precioTotalEnvio = precioTotalEnvio;
+        this.fechaEntrega = fechaEntrega;
+        this.fechaPedido = fechaPedido;
+        this.id = id;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getDireccionEnvio() {
+        return direccionEnvio;
+    }
+
+    public void setDireccionEnvio(String direccionEnvio) {
+        this.direccionEnvio = direccionEnvio;
+    }
+
+    public EstadoEnvio getEstadoEnvio() {
+        return estadoEnvio;
+    }
+
+    public void setEstadoEnvio(EstadoEnvio estadoEnvio) {
+        this.estadoEnvio = estadoEnvio;
+    }
+
+    public List<Producto> getListaProductos() {
+        return listaProductos;
+    }
+
+    public void setListaProductos(List<Producto> listaProductos) {
+        this.listaProductos = listaProductos;
+    }
+
+    public double getPrecioTotalEnvio() {
+        return precioTotalEnvio;
+    }
+
+    public void setPrecioTotalEnvio(double precioTotalEnvio) {
+        this.precioTotalEnvio = precioTotalEnvio;
+    }
+
+    public LocalDateTime getFechaEntrega() {
+        return fechaEntrega;
+    }
+
+    public void setFechaEntrega(LocalDateTime fechaEntrega) {
+        this.fechaEntrega = fechaEntrega;
+    }
+
+    public LocalDateTime getFechaPedido() {
+        return fechaPedido;
+    }
+
+    public void setFechaPedido(LocalDateTime fechaPedido) {
+        this.fechaPedido = fechaPedido;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
 }
