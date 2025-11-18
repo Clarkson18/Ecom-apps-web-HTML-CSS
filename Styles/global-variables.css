@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&family=Pixelify+Sans:wght@400..700&display=swap');
+
+:root{
+  --backgroundColor: #171616;
+  --highlight: #2A8493;
+  --backgroundDiv:#00a896;
+  --happySourceGreen:#E2FFE2;
+  --almostWhite:#FDFFFA;
+  --formBackground:#C2F0C2;
+  --lightGreen:#EBFFEB;
+  --darkGreen:#0B4A0B;
+  --fontColorForm:#7FB57F;
+  font-family: 'Arimo';
+  margin: 0px;
+  padding: 0px;
+}

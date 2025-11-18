@@ -1,23 +1,21 @@
-<!DOCTYPE html>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
+<!<!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title>Happy Source | Inicio</title>
     <link rel="stylesheet" href="../styles/styles.css">
-    <link rel="icon" type="image/png" sizes="32x32" href="../assets/logoHS.png">
+    <%@include file="fragmentos/header.jspf" %> 
 
 
   </head>
   <body class="landingPage">
     <div class="landingPageContainer">
-        <nav class="barraNavegacion">
-          <h2 id="logo"><a href="index.html" class="mainLink">Happy Source</a></h2>
-          <ul>
-            <a href="pedidos.html" id="op1">Mis pedidos</a>
-            <a href="carrito.html" id="op2">Carrito</a>
-            <a href="usuario.html" id="op2">Perfil</a>
-          </ul>
-        </nav>
+        
+        <%@include file="fragmentos/header.jspf" %> 
 
         <div class="bannerContainer">
           <div class="subtitulo">
@@ -49,35 +47,7 @@
         </div>
     </div>
 
-    <footer>
-      <div class="contenidoFooter">
-        <div class="footerSection">
-          <h4>Happy Source</h4>
-          <p>Productos naturales, vitaminas y suplementos para cuidar tu bienestar cada día.</p>
-        </div>
-
-        <div class="footerSection">
-          <h4>Explorar</h4>
-          <a href="index.html">Inicio</a>
-          <a href="catalogo.html">Catálogo</a>
-          <a href="carrito.html">Carrito</a>
-          <a href="https://www.instagram.com/_islazzz/">Contacto</a>
-        </div>
-
-        <div class="footerSection">
-          <h4>Síguenos</h4>
-          <div class="social-icons">
-            <a href="#">🌿</a>
-            <a href="#">📘</a>
-            <a href="#">📸</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="copyright">
-        <p>© 2025 Happy Source. Todos los derechos reservados.</p>
-      </div>
-    </footer>
+      <%@include file="fragmentos/footer.jspf" %> 
 
   </body>
 </html>

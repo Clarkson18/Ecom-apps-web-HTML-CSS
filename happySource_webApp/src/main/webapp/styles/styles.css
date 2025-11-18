@@ -1,5 +1,13 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Nov 11, 2025, 10:47:17 AM
+    Author     : abrilislas
+*/
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-@import "./global-variables.css";
 
 body{
     background-color: #FFF9F1;
@@ -14,7 +22,7 @@ body{
 }
 
 .barraNavegacion{
-  background-color: var(--happySourceGreen);
+  background-color: #E2FFE2;
   display: flex;
   flex-direction:row;
   flex-wrap: wrap;
@@ -448,3 +456,5 @@ footer .copyright {
       text-align: center;
     }
 }
+
+

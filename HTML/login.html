@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Happy Source | Login</title>
+    <link rel="stylesheet" href="../Styles/styles_login.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../assets/logoHS.png"
+    />
+  </head>
+  <body>
+    <nav class="barraNavegacion">
+      <h2 id="logo">
+        <a href="index.html" class="mainLink">Happy Source</a>
+      </h2>
+    </nav>
+    <div class="main-container">
+      <div class="div-formulario-inicio-sesion">
+        <div class="titulo"><h2>Iniciar sesión</h2></div>
+        <div class="logo-usuario">
+          <img src="../assets/login-icon.png" alt="icono usuario" />
+        </div>
+        <form class="formulario-inicio-sesion">
+          <div class="seccion-correo" id="seccion-correo">
+            <label class="label-correo" for="correo">Correo</label>
+            <input type="text" class="box-correo" id="correo" name="correo" required />
+          </div>
+          <div class="seccion-password" id="seccion-password">
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" name="password" required />
+          </div>
+          <div class="boton-iniciar-sesion">
+            <button
+              type="button"
+              name="iniciar-sesion"
+              id="iniciar-sesion"
+              onclick="window.location.href='index.html'"
+            >
+              Iniciar sesión
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
