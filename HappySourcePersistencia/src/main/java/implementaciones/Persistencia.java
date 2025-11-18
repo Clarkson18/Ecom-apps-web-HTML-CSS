@@ -4,7 +4,6 @@
  */
 package implementaciones;
 
-import definiciones.IUsuarios;
 import definiciones.IUsuariosDAO;
 import dtos.UsuarioLogueadoDTO;
 import dtos.UsuarioDTO;
@@ -14,12 +13,13 @@ import java.security.spec.InvalidKeySpecException;
 import utils.PassManager;
 
 import java.util.List;
+import definiciones.IPersistencia;
 
 /**
  *
  * @author vv094
  */
-public class Persistencia implements IUsuarios {
+public class Persistencia implements IPersistencia {
 
     private final IUsuariosDAO usuariosDAO;
 
