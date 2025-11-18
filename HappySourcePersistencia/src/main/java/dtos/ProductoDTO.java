@@ -12,11 +12,12 @@ import Enumeradores.Categoria;
  */
 public class ProductoDTO {
     
-    public String nombre;
-    public String desripcionProducto;
-    public double precio;
-    public int cantidadExistencia;
-    public Categoria categoria;
+    private String nombre;
+    private String desripcionProducto;
+    private double precio;
+    private int cantidadExistencia;
+    private Categoria categoria;
+    private String id;
 
     public ProductoDTO(String nombre, String desripcionProducto, double precio, int cantidadExistencia, Categoria categoria) {
         this.nombre = nombre;
@@ -66,5 +67,11 @@ public class ProductoDTO {
         this.categoria = categoria;
     }
     
+    public String getId() {
+        return id;
+    }
     
+    public void setId(String id) {
+        this.id = id;
+    }
 }
