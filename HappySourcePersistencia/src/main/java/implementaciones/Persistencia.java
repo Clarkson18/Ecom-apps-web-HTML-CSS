@@ -4,8 +4,8 @@
  */
 package implementaciones;
 
-import definiciones.IUsuarios;
-import definiciones.IUsuariosDAO;
+import interfaces.IUsuarios;
+import interfaces.IUsuariosDAO;
 import dtos.AdminLogueadoDTO;
 import dtos.UsuarioDTO;
 import entidades.Usuario;

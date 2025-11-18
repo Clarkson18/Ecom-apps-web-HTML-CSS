@@ -5,8 +5,6 @@
 package dtos;
 
 import Enumeradores.EstadoEnvio;
-import entidades.Producto;
-import entidades.Usuario;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -16,15 +14,15 @@ import java.util.List;
  */
 public class PedidoDTO {
     
-    private Usuario usuario;
+    private UsuarioDTO usuario;
     public String direccionEnvio; 
     public EstadoEnvio estadoEnvio;
-    public List<Producto> listaProductos;
+    public List<ProductoDTO> listaProductos;
     public double precioTotalEnvio;
     public LocalDateTime fechaEntrega;
     public LocalDateTime fechaPedido;
 
-    public PedidoDTO(Usuario usuario, String direccionEnvio, List<Producto> listaProductos, double precioTotalEnvio, LocalDateTime fechaPedido) {
+    public PedidoDTO(UsuarioDTO usuario, String direccionEnvio, List<ProductoDTO> listaProductos, double precioTotalEnvio, LocalDateTime fechaPedido) {
         this.usuario = usuario;
         this.direccionEnvio = direccionEnvio;
         this.listaProductos = listaProductos;
@@ -32,11 +30,11 @@ public class PedidoDTO {
         this.fechaPedido = fechaPedido;
     }
 
-    public Usuario getUsuario() {
+    public UsuarioDTO getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(UsuarioDTO usuario) {
         this.usuario = usuario;
     }
 
@@ -56,11 +54,11 @@ public class PedidoDTO {
         this.estadoEnvio = estadoEnvio;
     }
 
-    public List<Producto> getListaProductos() {
+    public List<ProductoDTO> getListaProductos() {
         return listaProductos;
     }
 
-    public void setListaProductos(List<Producto> listaProductos) {
+    public void setListaProductos(List<ProductoDTO> listaProductos) {
         this.listaProductos = listaProductos;
     }
 
