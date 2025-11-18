@@ -19,6 +19,9 @@ public class ProductoDTO {
     private Categoria categoria;
     private String id;
 
+    public ProductoDTO() {
+    }
+
     public ProductoDTO(String nombre, String desripcionProducto, double precio, int cantidadExistencia, Categoria categoria) {
         this.nombre = nombre;
         this.desripcionProducto = desripcionProducto;

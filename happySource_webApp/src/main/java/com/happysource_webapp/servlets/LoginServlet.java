@@ -4,7 +4,6 @@
  */
 package com.happysource_webapp.servlets;
 
-import BusinessObjects.AutenticacionBO;
 import dtos.UsuarioLogueadoDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -78,12 +77,12 @@ public class LoginServlet extends HttpServlet {
         String correoElectronico =request.getParameter("corroElectronico");
         String password = request.getParameter("passwordUsuario");
         
-        AutenticacionBO autenticacionBO = new AutenticacionBO();
-        UsuarioLogueadoDTO usuarioLogueado= autenticacionBO.iniciarSesion(password, password);
+        //AutenticacionBO autenticacionBO = new AutenticacionBO();
+       // UsuarioLogueadoDTO usuarioLogueado= autenticacionBO.iniciarSesion(password, password);
         
-        if(usuarioLogueado!=null){
+       // if(usuarioLogueado!=null){
             HttpSession session = request.getSession(true);
-        }
+       // }
         //processRequest(request, response);
     }
 

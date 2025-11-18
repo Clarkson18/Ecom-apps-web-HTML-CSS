@@ -5,6 +5,8 @@
 package definiciones;
 
 import dtos.UsuarioLogueadoDTO;
+import entidades.Producto;
+import dtos.ProductoDTO;
 import dtos.UsuarioDTO;
 import java.util.List;
 
@@ -13,6 +15,7 @@ import java.util.List;
  * @author vv094
  */
 public interface IPersistencia {
+    //Usuario methods
     UsuarioDTO registrarUsuario(UsuarioDTO usuarioDTO);
     
     UsuarioDTO actualizarUsuario();
@@ -22,4 +25,11 @@ public interface IPersistencia {
     List<UsuarioDTO> consultarUsuarios();
 
     UsuarioLogueadoDTO loginUsuario(String correo, String contraseña);
+
+    //Producto methods
+    List<ProductoDTO> listaProductos();
+    ProductoDTO agregarProducto(ProductoDTO productoDTO);
+    ProductoDTO actualizarProducto(ProductoDTO productoDTO);
+    ProductoDTO eliminarProducto(ProductoDTO productoDTO);
+    ProductoDTO obtenerProductoPorId(String id);
 }
