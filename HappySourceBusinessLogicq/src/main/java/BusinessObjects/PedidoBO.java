@@ -1,4 +1,4 @@
-package BusinessObject;
+package BusinessObjects;
 /**
  *
  * @author abrilislas

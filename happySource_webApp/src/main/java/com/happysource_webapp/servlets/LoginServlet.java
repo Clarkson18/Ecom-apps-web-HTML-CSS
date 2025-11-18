@@ -4,6 +4,8 @@
  */
 package com.happysource_webapp.servlets;
 
+import BusinessObjects.AutenticacionBO;
+import dtos.UsuarioLogueadoDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -73,13 +75,13 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String usuario =request.getParameter("UsuarioID");
+        String correoElectronico =request.getParameter("corroElectronico");
         String password = request.getParameter("passwordUsuario");
         
         AutenticacionBO autenticacionBO = new AutenticacionBO();
-        UsuarioDTO usuarioLogged= autenticacionBO.iniciarSesion(usuario,password);
+        UsuarioLogueadoDTO usuarioLogueado= autenticacionBO.iniciarSesion(password, password);
         
-        if(usuarioLogged!=null){
+        if(usuarioLogueado!=null){
             HttpSession session = request.getSession(true);
         }
         //processRequest(request, response);
