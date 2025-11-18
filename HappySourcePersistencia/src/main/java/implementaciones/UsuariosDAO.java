@@ -14,6 +14,7 @@ import dtos.AdminLogueadoDTO;
 import dtos.UsuarioDTO;
 import entidades.Usuario;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.bson.Document;
 
@@ -60,7 +61,7 @@ public class UsuariosDAO implements IUsuariosDAO {
 
     @Override
     public List<Usuario> consultarUsuarios() {
-        MongoCollection coleccion = ConexionMongoDB.getConexion();
+        MongoCollection<Usuario> coleccion = crearConexion();
         List<Usuario> usuarios = coleccion.find().into(new ArrayList<Usuario>());
         return usuarios;
     }
