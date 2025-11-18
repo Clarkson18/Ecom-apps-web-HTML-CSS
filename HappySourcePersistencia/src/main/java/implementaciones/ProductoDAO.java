@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.bson.Document;
 import org.bson.conversions.Bson;
+import org.bson.types.ObjectId;
 
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
@@ -98,8 +99,9 @@ public class ProductoDAO implements IProductoDAO {
 
     @Override
     public Producto obtenerProductoPorId(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from
-                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ObjectId objectId = new ObjectId(id);
+        MongoCollection<Producto> coleccion = crearConexion();
+        return coleccion.find(Filters.eq("_id", objectId)).first();
     }
 
     private MongoCollection crearConexion() {
