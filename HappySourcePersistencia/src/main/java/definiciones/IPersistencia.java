@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author vv094
  */
-public interface IUsuarios {
+public interface IPersistencia {
     UsuarioDTO registrarUsuario(UsuarioDTO usuarioDTO);
     
     UsuarioDTO actualizarUsuario();
