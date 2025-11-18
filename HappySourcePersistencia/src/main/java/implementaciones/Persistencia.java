@@ -55,7 +55,7 @@ public class Persistencia implements IUsuarios {
             throw new IllegalArgumentException("Usuario no encontrado");
         }
 
-        String password = usuario.getContraseña();
+        String password = usuario.getPassword();
 
         try {
             if (PassManager.verificarPassword(pass, password) && usuario.getRol().equals("ADMIN")) {

@@ -7,16 +7,16 @@ import Enumeradores.Rol;
 public class Usuario {
     private String nombre;
     private String correo;
-    private String contraseña;
+    private String password;
     private String telefono;
     private String direccion;
     private ObjectId id;
     private Rol rol;
 
-    public Usuario(String nombre, String correo, String contraseña, String telefono, String direccion, Rol rol) {
+    public Usuario(String nombre, String correo, String password, String telefono, String direccion, Rol rol) {
         this.nombre = nombre;
         this.correo = correo;
-        this.contraseña = contraseña;
+        this.password = password;
         this.telefono = telefono;
         this.direccion = direccion;
         this.rol = rol;
@@ -38,12 +38,12 @@ public class Usuario {
         this.correo = correo;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getPassword() {
+        return password;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getTelefono() {
