@@ -64,36 +64,35 @@ public class ProductoDAO implements IProductoDAO {
 
     @Override
     public Producto actualizarProducto(Producto producto) {
-//        try{
-//            FindOneAndUpdateOptions opciones = new FindOneAndUpdateOptions()
-//                    .upsert(false)
-//                    .returnDocument(ReturnDocument.AFTER);
-//
-//            Document updateSet = new Document();
-//            updateSet.append(CAMPO_NOMBRES, cliente.getNombres());
-//            updateSet.append(CAMPO_APELLIDO, cliente.getApellidos());
-//            updateSet.append(CAMPO_CORREO, cliente.getEmail());
-//            updateSet.append(CAMPO_TELEFONO, cliente.getNumeroTelefono());
-//
-//            Document update = new Document("$set", updateSet);
-//
-//            MongoCollection<Cliente> coleccion = crearConexion();
-//
-//            Bson filtro = Filters.eq("_id", cliente.getId());
-//
-//            Cliente clienteActualizado = coleccion.findOneAndUpdate(filtro, update, opciones);
-//
-//            if (clienteActualizado == null) {
-//                throw new RuntimeException("No se encontró el cliente con ID: " + cliente.getId());
-//            }
-//
-//            return clienteActualizado;
-//
-//        } catch (Exception e) {
-//            System.err.println("Error al eliminar cliente: " + e.getMessage());
-//            throw new RuntimeException("Error de base de datos", e);
-//        }
-return new Producto();
+        try{
+            FindOneAndUpdateOptions opciones = new FindOneAndUpdateOptions()
+                    .upsert(false)
+                    .returnDocument(ReturnDocument.AFTER);
+
+            Document updateSet = new Document();
+            updateSet.append(CAMPO_NOMBRES, cliente.getNombres());
+            updateSet.append(CAMPO_APELLIDO, cliente.getApellidos());
+            updateSet.append(CAMPO_CORREO, cliente.getEmail());
+            updateSet.append(CAMPO_TELEFONO, cliente.getNumeroTelefono());
+
+            Document update = new Document("$set", updateSet);
+
+            MongoCollection<Cliente> coleccion = crearConexion();
+
+            Bson filtro = Filters.eq("_id", cliente.getId());
+
+            Cliente clienteActualizado = coleccion.findOneAndUpdate(filtro, update, opciones);
+
+            if (clienteActualizado == null) {
+                throw new RuntimeException("No se encontró el cliente con ID: " + cliente.getId());
+            }
+
+            return clienteActualizado;
+
+        } catch (Exception e) {
+            System.err.println("Error al eliminar cliente: " + e.getMessage());
+            throw new RuntimeException("Error de base de datos", e);
+        }
     }
 
     @Override
