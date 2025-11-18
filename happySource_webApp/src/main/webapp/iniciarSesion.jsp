@@ -20,7 +20,7 @@
       <div class="contenido">
         <h2>Iniciar sesión</h2>
         <h4>Ingresa tus credenciales</h4>
-        <form action="">
+        <form action="/AdminLoginServlet.">
           <label for="usuario">Nombre de usuario: </label>
           <input id="usuarioID" name="usuarioID" type="text" placeholder="Abril Islas" required autocomplete="off"/>
 
