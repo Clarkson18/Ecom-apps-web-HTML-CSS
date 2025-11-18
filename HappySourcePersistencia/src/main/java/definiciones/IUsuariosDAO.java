@@ -14,11 +14,12 @@ import java.util.List;
  * @author vv094
  */
 public interface IUsuariosDAO {
+   
     Usuario registrarUsuario(UsuarioDTO usuarioDTO);
     
-    Usuario actualizarUsuario();
+    Usuario actualizarUsuario(UsuarioDTO usuarioDTO);
     
-    Usuario eliminarUsuario();
+    Usuario eliminarUsuario(UsuarioDTO usuarioDTO,  String correo);
     
     List<Usuario> consultarUsuarios();
     

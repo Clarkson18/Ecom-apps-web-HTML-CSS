@@ -12,5 +12,6 @@ public enum EstadoEnvio {
     
     PROCESANDO_PAGO, 
     ENVIADO, 
-    EN_REPARTO
+    EN_REPARTO,
+    ENTREGADO
 }

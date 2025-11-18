@@ -7,6 +7,7 @@ import entidades.Pedido;
 public interface IPedidosDAO {
     public Pedido actualizarEstadoPedido(String idPedido, EstadoEnvio nuevoEstado);
     public List<Pedido> consultarPedidos(String idUsuario);
+    public List<Pedido> consultarTodosLosPedidos();
     public Pedido crearPedido(Pedido pedido);
     public Pedido obtenerPedidoPorId(String idPedido);
 }

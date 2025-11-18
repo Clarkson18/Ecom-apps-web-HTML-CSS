@@ -1,27 +1,21 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package implementaciones;
 
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.FindOneAndUpdateOptions;
+import com.mongodb.client.model.ReturnDocument;
 
 import conexion.ConexionMongoDB;
 import definiciones.IUsuariosDAO;
-import dtos.UsuarioLogueadoDTO;
 import dtos.UsuarioDTO;
 import entidades.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
 import org.bson.Document;
+import org.bson.types.ObjectId;
 
-/**
- *
- * @author vv094
- */
 public class UsuariosDAO implements IUsuariosDAO {
 
     private final String NOMBRE_COLECCION = "Usuarios";
@@ -40,43 +34,86 @@ public class UsuariosDAO implements IUsuariosDAO {
         }
         return instance;
     }
-
+    
     @Override
     public Usuario registrarUsuario(UsuarioDTO usuarioDTO) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from
-                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+        try {
+            MongoCollection<Usuario> coleccion = crearConexion();
 
-    @Override
-    public Usuario actualizarUsuario() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from
-                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+            Usuario usuario = new Usuario();
+            usuario.setId(new ObjectId());
+            usuario.setNombre(usuarioDTO.getNombreCompleto());
+            usuario.setCorreo(usuarioDTO.getCorreoElectronico());
+            usuario.setPassword(usuarioDTO.getPassword());
+            usuario.setTelefono(usuarioDTO.getTelefono());
+            usuario.setDirecciones(usuarioDTO.getDirecciones());
+            usuario.setRol(usuarioDTO.getRol());
 
-    @Override
-    public Usuario eliminarUsuario() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from
-                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            coleccion.insertOne(usuario);
+            return usuario;
+
+        } catch (Exception e) {
+            System.err.println("Error al registrar usuario: " + e.getMessage());
+            throw new RuntimeException("Error al registrar usuario", e);
+        }
     }
 
     @Override
     public List<Usuario> consultarUsuarios() {
         MongoCollection<Usuario> coleccion = crearConexion();
-        List<Usuario> usuarios = coleccion.find().into(new ArrayList<Usuario>());
-        return usuarios;
+        return coleccion.find().into(new ArrayList<>());
     }
 
     @Override
     public Usuario getUsuarioCorreo(String correo) {
         MongoCollection<Usuario> coleccion = crearConexion();
-        Usuario usuario = coleccion.find(Filters.eq(CAMPO_CORREO, correo)).first();
-        return usuario;
+        return coleccion.find(Filters.eq(CAMPO_CORREO, correo)).first();
     }
 
-    private MongoCollection crearConexion() {
+    private MongoCollection<Usuario> crearConexion() {
         MongoDatabase db = ConexionMongoDB.getConexion();
-        MongoCollection<Usuario> coleccion = db.getCollection(NOMBRE_COLECCION, Usuario.class);
-        return coleccion;
+        return db.getCollection(NOMBRE_COLECCION, Usuario.class);
     }
 
+    @Override
+    public Usuario actualizarUsuario(UsuarioDTO usuarioDTO) {
+                try {
+            MongoCollection<Usuario> coleccion = crearConexion();
+
+            Document update = new Document()
+                .append(CAMPO_NOMBRES, usuarioDTO.getNombreCompleto())
+                .append(CAMPO_CONTRASEÑA, usuarioDTO.getPassword())
+                .append(CAMPO_TELEFONO, usuarioDTO.getTelefono())
+                .append(CAMPO_DIRECCION, usuarioDTO.getDirecciones())
+                .append(CAMPO_ROL, usuarioDTO.getRol());
+
+            Document updateDoc = new Document("$set", update);
+
+            FindOneAndUpdateOptions opciones = new FindOneAndUpdateOptions()
+                .returnDocument(ReturnDocument.AFTER);
+
+            return coleccion.findOneAndUpdate(
+                Filters.eq(CAMPO_CORREO, usuarioDTO.getCorreoElectronico()),
+                updateDoc,
+                opciones
+            );
+
+        } catch (Exception e) {
+            System.err.println("Error al actualizar usuario: " + e.getMessage());
+            throw new RuntimeException("Error al actualizar usuario", e);
+        }
+    }
+
+    @Override
+    public Usuario eliminarUsuario(UsuarioDTO usuarioDTO, String correo) {
+        try {
+            MongoCollection<Usuario> coleccion = crearConexion();
+
+            return coleccion.findOneAndDelete(Filters.eq(CAMPO_CORREO, correo));
+
+        }catch (Exception e) {
+            System.err.println("Error al eliminar usuario: " + e.getMessage());
+            throw new RuntimeException("Error al eliminar usuario", e);
+        }
+    }
 }

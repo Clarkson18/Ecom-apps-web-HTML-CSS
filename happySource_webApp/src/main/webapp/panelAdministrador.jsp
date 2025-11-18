@@ -27,10 +27,12 @@
           <h2 class="title">Administración de usuarios</h2>
           <h4 class="subtitle">Selecciona una opción</h4>
           <div class="botonesContainer">
-            <button type="getUsuarios" name="getUsuarios">Consultar usuarios</button>
-            <button type="updateUsuario" name="updateUsuario">Actualizar usuario</button>
-            <button type="deleteUsuario" name="deleteUsuario">Eliminar usuario</button>
-            <button type="deleteUsuario" name="deleteUsuario">Consultar pedidos</button>
+            <form action="<%= request.getContextPath() %>/AdministrativeServlet" method="get">
+                <button type="submit" name="accion" value="getUsuarios">Consultar usuarios</button>
+                <button type="submit" name="accion" value="updateUsuario">Actualizar usuario</button>
+                <button type="submit" name="accion" value="deleteUsuario">Eliminar usuario</button>
+                <button type="submit" name="accion" value="getPedidos">Consultar pedidos</button>
+            </form>
           </div>
         </div>
 
@@ -38,10 +40,12 @@
           <h2 class="title">Administración de productos</h2>
           <h4 class="subtitle">Selecciona una opción</h4>
           <div class="botonesContainer">
-            <button type="addProducto" name="addProducto">Agregar producto</button>
-            <button type="deleteProductos" name="deleteProductos">Eliminar producto</button>
-            <button type="updateProductos" name="updateProductos">Actualizar producto</button>
-            <button type="getProductos" name="getProductos">Consultar productos</button>
+            <form action="<%= request.getContextPath() %>/AdministrativeServlet" method="get">
+                <button type="submit" name="accion" value="addProducto">Agregar producto</button>
+                <button type="submit" name="accion" value="deleteProductos">Eliminar producto</button>
+                <button type="submit" name="accion" value="updateProductos">Actualizar producto</button>
+                <button type="submit" name="accion" value="getProductos">Consultar productos</button>
+            </form>
           </div>
         </div>
 

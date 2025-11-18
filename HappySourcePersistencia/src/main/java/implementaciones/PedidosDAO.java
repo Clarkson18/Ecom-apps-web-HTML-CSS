@@ -67,8 +67,16 @@ public class PedidosDAO implements IPedidosDAO {
 
     @Override
     public Pedido crearPedido(Pedido pedido) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'crearPedido'");
+        try {
+            MongoCollection<Pedido> coleccion = crearConexion();
+
+            coleccion.insertOne(pedido);
+            return pedido;
+
+        }catch (Exception e) {
+            System.err.println("Error al crear pedido: " + e.getMessage());
+            throw new RuntimeException("Error de base de datos al crear el pedido", e);
+        }
     }
 
     @Override
@@ -83,4 +91,17 @@ public class PedidosDAO implements IPedidosDAO {
         MongoCollection<Pedido> coleccion = db.getCollection(NOMBRE_COLECCION, Pedido.class);
         return coleccion;
     }
+
+    @Override
+    public List<Pedido> consultarTodosLosPedidos() {
+        try {
+            MongoCollection<Pedido> coleccion = crearConexion();
+            List<Pedido> pedidos = coleccion.find().into(new java.util.ArrayList<>());
+            return pedidos;
+        }catch (Exception e) {
+            System.err.println("Error al consultar todos los pedidos: " + e.getMessage());
+            throw new RuntimeException("Error de base de datos", e);
+        }
+    }
+    
 }

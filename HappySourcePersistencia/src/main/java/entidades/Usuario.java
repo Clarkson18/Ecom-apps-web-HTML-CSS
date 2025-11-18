@@ -14,7 +14,10 @@ public class Usuario {
     private List<String> direcciones;
     private ObjectId id;
     private Rol rol;
-
+    
+    //constructor vacio
+    public Usuario(){}
+    
     public Usuario(String nombre, String correo, String password, String telefono, List<String> direcciones, Rol rol) {
         this.nombre = nombre;
         this.correo = correo;
