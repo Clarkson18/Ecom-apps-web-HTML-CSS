@@ -4,7 +4,6 @@
  */
 package definiciones;
 
-import dtos.AdminLoginDTO;
 import dtos.AdminLogueadoDTO;
 import dtos.UsuarioDTO;
 import java.util.List;
