@@ -4,7 +4,6 @@
  */
 package definiciones;
 
-import dtos.AdminLogueadoDTO;
 import dtos.UsuarioDTO;
 import entidades.Usuario;
 
