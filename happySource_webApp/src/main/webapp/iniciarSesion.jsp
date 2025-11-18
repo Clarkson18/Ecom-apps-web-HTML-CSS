@@ -20,13 +20,13 @@
       <div class="contenido">
         <h2>Iniciar sesión</h2>
         <h4>Ingresa tus credenciales</h4>
-        <form action="/AdminLoginServlet.">
+        <form action="LoginServlet">
           <label for="usuario">Nombre de usuario: </label>
           <input id="usuarioID" name="usuarioID" type="text" placeholder="Abril Islas" required autocomplete="off"/>
 
           <label for="usuario">Contraseña: </label>
           <input id="passwordUsuario" name="passwordUsuario" type="password" placeholder="" required autocomplete="off"/>
-
+        
           <a href="cambiar_password">¿Has olvidado tu contraseña?</a>
 
           <button type="submit" class="botones">Iniciar sesión</button>

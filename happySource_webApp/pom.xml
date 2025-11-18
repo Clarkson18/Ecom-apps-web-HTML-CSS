@@ -40,6 +40,16 @@
           <artifactId>mongodb-driver-sync</artifactId>
           <version>5.2.0</version> 
         </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>HappySourcePersistencia</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>error</groupId>
+            <artifactId>error</artifactId>
+            <version>0</version>
+        </dependency>
     </dependencies>
     
      <build>

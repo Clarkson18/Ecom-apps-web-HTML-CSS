@@ -11,13 +11,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
  * @author abrilislas
  */
-@WebServlet(name = "AdminLoginServlet", urlPatterns = {"/AdminLoginServlet"})
-public class AdminLoginServlet extends HttpServlet {
+@WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
+public class LoginServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -57,7 +58,7 @@ public class AdminLoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.sendRedirect("Views/iniciarSesion.jsp");
     }
 
     /**
@@ -71,7 +72,17 @@ public class AdminLoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        String usuario =request.getParameter("UsuarioID");
+        String password = request.getParameter("passwordUsuario");
+        
+        AutenticacionBO autenticacionBO = new AutenticacionBO();
+        UsuarioDTO usuarioLogged= autenticacionBO.iniciarSesion(usuario,password);
+        
+        if(usuarioLogged!=null){
+            HttpSession session = request.getSession(true);
+        }
+        //processRequest(request, response);
     }
 
     /**
