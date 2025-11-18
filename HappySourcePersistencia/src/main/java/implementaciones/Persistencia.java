@@ -6,7 +6,7 @@ package implementaciones;
 
 import definiciones.IUsuarios;
 import definiciones.IUsuariosDAO;
-import dtos.AdminLogueadoDTO;
+import dtos.UsuarioLogueadoDTO;
 import dtos.UsuarioDTO;
 import entidades.Usuario;
 import java.security.NoSuchAlgorithmException;
@@ -48,7 +48,7 @@ public class Persistencia implements IUsuarios {
     }
 
     @Override
-    public AdminLogueadoDTO loginAdmin(String correo, String pass) {
+    public UsuarioLogueadoDTO loginUsuario(String correo, String pass) {
         Usuario usuario = usuariosDAO.getUsuarioCorreo(correo);
 
         if (usuario == null) {
@@ -58,8 +58,8 @@ public class Persistencia implements IUsuarios {
         String password = usuario.getPassword();
 
         try {
-            if (PassManager.verificarPassword(pass, password) && usuario.getRol().equals("ADMIN")) {
-                return new AdminLogueadoDTO(usuario.getNombre(), usuario.getCorreo(), usuario.getId().toString(), usuario.getRol());
+            if (PassManager.verificarPassword(pass, password)) {
+                return new UsuarioLogueadoDTO(usuario.getNombre(), usuario.getCorreo(), usuario.getId().toString(), usuario.getRol(), usuario.getDirecciones());
             } else {
                 throw new IllegalArgumentException("Credenciales incorrectas");
 

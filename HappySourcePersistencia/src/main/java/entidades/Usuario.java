@@ -1,5 +1,7 @@
 package entidades;
 
+import java.util.List;
+
 import org.bson.types.ObjectId;
 
 import Enumeradores.Rol;
@@ -9,16 +11,16 @@ public class Usuario {
     private String correo;
     private String password;
     private String telefono;
-    private String direccion;
+    private List<String> direcciones;
     private ObjectId id;
     private Rol rol;
 
-    public Usuario(String nombre, String correo, String password, String telefono, String direccion, Rol rol) {
+    public Usuario(String nombre, String correo, String password, String telefono, List<String> direcciones, Rol rol) {
         this.nombre = nombre;
         this.correo = correo;
         this.password = password;
         this.telefono = telefono;
-        this.direccion = direccion;
+        this.direcciones = direcciones;
         this.rol = rol;
     }
 
@@ -54,12 +56,12 @@ public class Usuario {
         this.telefono = telefono;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public List<String> getDirecciones() {
+        return direcciones;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setDirecciones(List<String> direcciones) {
+        this.direcciones = direcciones;
     }
 
     public Rol getRol() {

@@ -10,7 +10,7 @@ import com.mongodb.client.model.Filters;
 
 import conexion.ConexionMongoDB;
 import definiciones.IUsuariosDAO;
-import dtos.AdminLogueadoDTO;
+import dtos.UsuarioLogueadoDTO;
 import dtos.UsuarioDTO;
 import entidades.Usuario;
 

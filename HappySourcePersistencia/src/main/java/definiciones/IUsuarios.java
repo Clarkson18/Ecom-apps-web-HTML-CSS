@@ -4,7 +4,7 @@
  */
 package definiciones;
 
-import dtos.AdminLogueadoDTO;
+import dtos.UsuarioLogueadoDTO;
 import dtos.UsuarioDTO;
 import java.util.List;
 
@@ -21,5 +21,5 @@ public interface IUsuarios {
     
     List<UsuarioDTO> consultarUsuarios();
 
-    AdminLogueadoDTO loginAdmin(String correo, String contraseña);
+    UsuarioLogueadoDTO loginUsuario(String correo, String contraseña);
 }

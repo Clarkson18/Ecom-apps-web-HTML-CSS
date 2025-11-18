@@ -4,14 +4,14 @@ import java.util.List;
 
 import Enumeradores.Rol;
 
-public class AdminLogueadoDTO {
+public class UsuarioLogueadoDTO {
     private String nombre;
     private String correo;
     private String id;
     private List<String> direcciones;
     private Rol rol;
 
-    public AdminLogueadoDTO(String nombre, String correo, String id, Rol rol, List<String> direcciones) {
+    public UsuarioLogueadoDTO(String nombre, String correo, String id, Rol rol, List<String> direcciones) {
         this.nombre = nombre;
         this.correo = correo;
         this.id = id;
@@ -58,6 +58,4 @@ public class AdminLogueadoDTO {
     public void setRol(Rol rol) {
         this.rol = rol;
     }
-
-
 }
