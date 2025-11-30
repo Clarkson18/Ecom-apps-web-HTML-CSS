@@ -10,7 +10,7 @@
   <head>
     <meta charset="utf-8">
     <title>Happy Source | Iniciar sesión</title>
-    <link rel="stylesheet" href="../Styles/forms.css">
+    <link rel="stylesheet" href="/Styles/forms.css">
     <%@include file="fragmentos/icon.jspf" %>
   </head>
 
@@ -21,8 +21,8 @@
         <h2>Iniciar sesión</h2>
         <h4>Ingresa tus credenciales</h4>
         <form action="LoginServlet">
-          <label for="Correo electrónico">Correo: </label>
-          <input id="corroElectronico" name="corroElectronico" type="text" placeholder="Abril Islas" required autocomplete="off"/>
+          <label for="correo-electronico">Correo: </label>
+          <input id="correo-electronico" name="correo-electronico" class= "correo-electronico" type="text" placeholder="Abril Islas" required autocomplete="off"/>
 
           <label for="usuario">Contraseña: </label>
           <input id="passwordUsuario" name="passwordUsuario" type="password" placeholder="" required autocomplete="off"/>
