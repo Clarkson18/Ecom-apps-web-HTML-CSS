@@ -6,10 +6,6 @@ package entidades;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
-import org.bson.codecs.jsr310.LocalDateCodec;
-import org.bson.codecs.jsr310.LocalDateTimeCodec;
-
 import Enumeradores.EstadoEnvio;
 
 /**

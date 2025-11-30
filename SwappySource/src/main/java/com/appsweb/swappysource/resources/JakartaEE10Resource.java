@@ -1,4 +1,4 @@
-package com.happysource_webapp.resources;
+package com.appsweb.swappysource.resources;
 
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
@@ -8,13 +8,13 @@ import jakarta.ws.rs.core.Response;
  *
  * @author 
  */
-@Path("rest")
-public class JakartaEE8Resource {
+@Path("jakartaee10")
+public class JakartaEE10Resource {
     
     @GET
     public Response ping(){
         return Response
-                .ok("ping")
+                .ok("ping Jakarta EE")
                 .build();
     }
 }
