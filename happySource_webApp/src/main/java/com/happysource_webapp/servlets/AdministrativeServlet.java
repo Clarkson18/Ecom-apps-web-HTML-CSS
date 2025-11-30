@@ -6,6 +6,7 @@ package com.happysource_webapp.servlets;
 
 import BusinessObject.UsuarioBO;
 import BusinessObjects.PedidoBO;
+import implementaciones.UsuariosDAO;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -20,7 +21,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet(name = "AdministrativeServlet", urlPatterns = {"/AdministrativeServlet"})
 public class AdministrativeServlet extends HttpServlet {
 
-    private UsuarioBO usuarioBO = new UsuarioBO();
+    private UsuarioBO usuarioBO = new UsuarioBO(new UsuariosDAO());
     private PedidoBO pedidoBO = new PedidoBO();
 
     @Override

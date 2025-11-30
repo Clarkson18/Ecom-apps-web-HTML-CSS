@@ -1,1 +1,5 @@
+exceptions\BOException.class
 BusinessObject\ProductoBO.class
+BusinessObject\UsuarioBO.class
+BusinessObjects\PedidoBO.class
+BusinessObjects\AutenticacionBO.class
