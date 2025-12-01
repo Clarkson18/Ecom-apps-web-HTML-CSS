@@ -1,0 +1,67 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Nov 11, 2025, 10:48:07 AM
+    Author     : abrilislas
+*/
+@import url("./global.css");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+.landingPage {
+  display: grid;
+  grid-row: auto auto auto;
+  margin: 0px;
+  font-family: "Inter";
+  background-color: var(--body-bg-color);
+}
+
+.barraNavegacion {
+  background-color: var(--header-bg-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0 0 20px;
+}
+
+.barraNavegacion #logo {
+  font-family: "Inter";
+  font-weight: 900;
+  color: var(--header-text-color);
+  font-size: 2em;
+  margin-right: 60%;
+  margin-top: 20px;
+}
+
+.barraNavegacion > ul {
+  padding-top: 15px;
+}
+
+.barraNavegacion > ul > a {
+  text-decoration: none;
+  display: inline;
+  padding: 10px;
+  font-weight: bolder;
+  color: var(--body-color-texto-catalogo);
+}
+
+.barraNavegacion > ul > a:hover {
+  color: var(--body-color-boton-consultar-catalogo);
+  transition: 0.5s;
+}
+
+.bannerContainer {
+  display: flex;
+  flex-direction: row;
+  margin: 0px 0px 0px 10px;
+}
+
+.bannerContainer > .subtitulo {
+  margin: 5px;
+  font-size: 1.1em;
+  display: column;
+}
+
+
+
