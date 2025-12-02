@@ -1,17 +1,25 @@
-package dtos;
-
-import java.util.List;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package DTOs;
 
 import Enumeradores.Rol;
+import java.util.List;
 
-public class AdminLogueadoDTO {
+/**
+ *
+ * @author vv094
+ */
+public class UsuarioLogueadoDTO {
+
     private String nombre;
     private String correo;
     private String id;
     private List<String> direcciones;
     private Rol rol;
 
-    public AdminLogueadoDTO(String nombre, String correo, String id, Rol rol, List<String> direcciones) {
+    public UsuarioLogueadoDTO(String nombre, String correo, String id, Rol rol, List<String> direcciones) {
         this.nombre = nombre;
         this.correo = correo;
         this.id = id;
@@ -53,11 +61,9 @@ public class AdminLogueadoDTO {
 
     public Rol getRol() {
         return rol;
-    }   
+    }
 
     public void setRol(Rol rol) {
         this.rol = rol;
     }
-
-
 }

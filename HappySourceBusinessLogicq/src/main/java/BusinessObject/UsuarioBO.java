@@ -23,8 +23,8 @@ public class UsuarioBO {
         this.usuariosDAO = usuariosDAO;
     }
     
-    public Usuario registrarUsuario(UsuarioDTO usuarioDTO) {
-
+    public UsuarioDTO registrarUsuario(UsuarioDTO usuarioDTO) {
+        Usuario usuario = 
         if (usuarioDTO == null) {
             throw new IllegalArgumentException("El DTO de usuario no puede ser nulo.");
         }

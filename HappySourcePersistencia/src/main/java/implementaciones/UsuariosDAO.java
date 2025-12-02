@@ -8,7 +8,6 @@ import com.mongodb.client.model.ReturnDocument;
 
 import conexion.ConexionMongoDB;
 import definiciones.IUsuariosDAO;
-import dtos.UsuarioDTO;
 import entidades.Usuario;
 
 import java.util.ArrayList;
@@ -36,18 +35,18 @@ public class UsuariosDAO implements IUsuariosDAO {
     }
     
     @Override
-    public Usuario registrarUsuario(UsuarioDTO usuarioDTO) {
+    public Usuario registrarUsuario(Usuario Usuario) {
         try {
             MongoCollection<Usuario> coleccion = crearConexion();
 
             Usuario usuario = new Usuario();
             usuario.setId(new ObjectId());
-            usuario.setNombre(usuarioDTO.getNombreCompleto());
-            usuario.setCorreo(usuarioDTO.getCorreoElectronico());
-            usuario.setPassword(usuarioDTO.getPassword());
-            usuario.setTelefono(usuarioDTO.getTelefono());
-            usuario.setDirecciones(usuarioDTO.getDirecciones());
-            usuario.setRol(usuarioDTO.getRol());
+            usuario.setNombre(Usuario.getNombre());
+            usuario.setCorreo(Usuario.getCorreo());
+            usuario.setPassword(Usuario.getPassword());
+            usuario.setTelefono(Usuario.getTelefono());
+            usuario.setDirecciones(Usuario.getDirecciones());
+            usuario.setRol(Usuario.getRol());
 
             coleccion.insertOne(usuario);
             return usuario;
@@ -76,16 +75,16 @@ public class UsuariosDAO implements IUsuariosDAO {
     }
 
     @Override
-    public Usuario actualizarUsuario(UsuarioDTO usuarioDTO) {
+    public Usuario actualizarUsuario(Usuario Usuario) {
                 try {
             MongoCollection<Usuario> coleccion = crearConexion();
 
             Document update = new Document()
-                .append(CAMPO_NOMBRES, usuarioDTO.getNombreCompleto())
-                .append(CAMPO_CONTRASEÑA, usuarioDTO.getPassword())
-                .append(CAMPO_TELEFONO, usuarioDTO.getTelefono())
-                .append(CAMPO_DIRECCION, usuarioDTO.getDirecciones())
-                .append(CAMPO_ROL, usuarioDTO.getRol());
+                .append(CAMPO_NOMBRES, Usuario.getNombre())
+                .append(CAMPO_CONTRASEÑA, Usuario.getPassword())
+                .append(CAMPO_TELEFONO, Usuario.getTelefono())
+                .append(CAMPO_DIRECCION, Usuario.getDirecciones())
+                .append(CAMPO_ROL, Usuario.getRol());
 
             Document updateDoc = new Document("$set", update);
 
@@ -93,7 +92,7 @@ public class UsuariosDAO implements IUsuariosDAO {
                 .returnDocument(ReturnDocument.AFTER);
 
             return coleccion.findOneAndUpdate(
-                Filters.eq(CAMPO_CORREO, usuarioDTO.getCorreoElectronico()),
+                Filters.eq(CAMPO_CORREO, Usuario.getCorreo()),
                 updateDoc,
                 opciones
             );
@@ -105,7 +104,7 @@ public class UsuariosDAO implements IUsuariosDAO {
     }
 
     @Override
-    public Usuario eliminarUsuario(UsuarioDTO usuarioDTO, String correo) {
+    public Usuario eliminarUsuario(Usuario Usuario, String correo) {
         try {
             MongoCollection<Usuario> coleccion = crearConexion();
 

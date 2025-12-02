@@ -4,7 +4,6 @@
  */
 package definiciones;
 
-import dtos.UsuarioDTO;
 import entidades.Usuario;
 
 import java.util.List;
@@ -15,11 +14,11 @@ import java.util.List;
  */
 public interface IUsuariosDAO {
    
-    Usuario registrarUsuario(UsuarioDTO usuarioDTO);
+    Usuario registrarUsuario(Usuario usuario);
     
-    Usuario actualizarUsuario(UsuarioDTO usuarioDTO);
+    Usuario actualizarUsuario(Usuario usuario);
     
-    Usuario eliminarUsuario(UsuarioDTO usuarioDTO,  String correo);
+    Usuario eliminarUsuario(Usuario usuario,  String correo);
     
     List<Usuario> consultarUsuarios();
     
