@@ -104,11 +104,11 @@ public class UsuariosDAO implements IUsuariosDAO {
     }
 
     @Override
-    public Usuario eliminarUsuario(Usuario Usuario, String correo) {
+    public Usuario eliminarUsuario(Usuario usuario) {
         try {
             MongoCollection<Usuario> coleccion = crearConexion();
 
-            return coleccion.findOneAndDelete(Filters.eq(CAMPO_CORREO, correo));
+            return coleccion.findOneAndDelete(Filters.eq(CAMPO_CORREO, usuario.getCorreo()));
 
         }catch (Exception e) {
             System.err.println("Error al eliminar usuario: " + e.getMessage());

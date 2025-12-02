@@ -4,7 +4,7 @@
  */
 package Adaptadores;
 
-import dtos.PedidoDTO;
+import DTOs.PedidoDTO;
 import entidades.Pedido;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,16 +15,15 @@ import java.util.List;
  */
 public class PedidoAdapter {
     public static PedidoDTO toDTO(Pedido pedido) {
-        PedidoDTO pedidoDTO = new PedidoDTO(
-                pedido.getUsuario(),
-                pedido.getDireccionEnvio(),
-                pedido.getEstadoEnvio(),
-                pedido.getListaProductos(),
-                pedido.getPrecioTotalEnvio(),
-                pedido.getFechaEntrega(),
-                pedido.getFechaPedido(),
-                pedido.getId()
-        );
+        PedidoDTO pedidoDTO = new PedidoDTO();
+        pedidoDTO.setUsuario(pedido.getUsuario());
+        pedidoDTO.setDireccionEnvio(pedido.getDireccionEnvio());
+        pedidoDTO.setEstadoEnvio(pedido.getEstadoEnvio());
+        pedidoDTO.setListaProductos(pedido.getListaProductos());
+        pedidoDTO.setPrecioTotalEnvio(pedido.getPrecioTotalEnvio());
+        pedidoDTO.setFechaEntrega(pedido.getFechaEntrega());
+        pedidoDTO.setFechaPedido(pedido.getFechaPedido());
+        pedidoDTO.setId(pedido.getId().toString());
 
         return pedidoDTO;
     }
@@ -33,14 +32,24 @@ public class PedidoAdapter {
         Pedido pedido = new Pedido(
                 pedidoDTO.getUsuario(),
                 pedidoDTO.getDireccionEnvio(),
-                pedidoDTO.getEstadoEnvio(),
                 pedidoDTO.getListaProductos(),
-                pedidoDTO.getPrecioTotalEnvio(),
-                pedidoDTO.getFechaEntrega(),
-                pedidoDTO.getFechaPedido(),
-                pedidoDTO.getId()
+                pedidoDTO.getPrecioTotalEnvio()
         );
 
+        return pedido;
+    }
+    
+    public static Pedido toEntityCompleto(PedidoDTO dto){
+        Pedido pedido = new Pedido();
+        pedido.setUsuario(dto.getUsuario());
+        pedido.setDireccionEnvio(dto.getDireccionEnvio());
+        pedido.setEstadoEnvio(dto.getEstadoEnvio());
+        pedido.setListaProductos(dto.getListaProductos());
+        pedido.setPrecioTotalEnvio(dto.getPrecioTotalEnvio());
+        pedido.setFechaEntrega(dto.getFechaEntrega());
+        pedido.setFechaPedido(dto.getFechaPedido());
+        pedido.setId(new org.bson.types.ObjectId(dto.getId()));
+        
         return pedido;
     }
 

@@ -4,7 +4,7 @@
  */
 package Adaptadores;
 
-import dtos.ProductoDTO;
+import DTOs.ProductoDTO;
 import entidades.Producto;
 import java.util.ArrayList;
 import java.util.List;

@@ -5,7 +5,7 @@
 package com.happysource_webapp.servlets;
 
 import BusinessObjects.AutenticacionBO;
-import dtos.UsuarioLogueadoDTO;
+import DTOs.UsuarioLogueadoDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;

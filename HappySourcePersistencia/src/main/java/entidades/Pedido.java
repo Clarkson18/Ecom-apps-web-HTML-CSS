@@ -6,6 +6,9 @@ package entidades;
 
 import java.time.LocalDateTime;
 import java.util.List;
+
+import org.bson.types.ObjectId;
+
 import Enumeradores.EstadoEnvio;
 
 /**
@@ -21,7 +24,10 @@ public class Pedido {
     private double precioTotalEnvio;
     private LocalDateTime fechaEntrega;
     private LocalDateTime fechaPedido;
-    private String id;
+    private ObjectId id;
+
+    public Pedido() {
+    }
 
     public Pedido(Usuario usuario, String direccionEnvio, List<Producto> listaProductos, double precioTotalEnvio) {
         this.usuario = usuario;
@@ -31,7 +37,7 @@ public class Pedido {
         this.fechaPedido = LocalDateTime.now();
     }
 
-    public Pedido(Usuario usuario, String direccionEnvio, EstadoEnvio estadoEnvio, List<Producto> listaProductos, double precioTotalEnvio, LocalDateTime fechaEntrega, LocalDateTime fechaPedido, String id) {
+    public Pedido(Usuario usuario, String direccionEnvio, EstadoEnvio estadoEnvio, List<Producto> listaProductos, double precioTotalEnvio, LocalDateTime fechaEntrega, LocalDateTime fechaPedido, ObjectId id) {
         this.usuario = usuario;
         this.direccionEnvio = direccionEnvio;
         this.estadoEnvio = estadoEnvio;
@@ -98,11 +104,11 @@ public class Pedido {
         this.fechaPedido = fechaPedido;
     }
 
-    public String getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 

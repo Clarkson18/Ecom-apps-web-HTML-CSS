@@ -1,7 +1,9 @@
 package BusinessObject;
 
+import Adaptadores.UsuarioAdapter;
+import DTOs.UsuarioDTO;
+import DTOs.UsuarioLogueadoDTO;
 import definiciones.IUsuariosDAO;
-import dtos.UsuarioDTO;
 import entidades.Usuario;
 import java.util.List;
 
@@ -9,12 +11,10 @@ import java.util.List;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 /**
  *
  * @author abrilislas
  */
-
 public class UsuarioBO {
 
     private final IUsuariosDAO usuariosDAO;
@@ -22,9 +22,9 @@ public class UsuarioBO {
     public UsuarioBO(IUsuariosDAO usuariosDAO) {
         this.usuariosDAO = usuariosDAO;
     }
-    
-    public UsuarioDTO registrarUsuario(UsuarioDTO usuarioDTO) {
-        Usuario usuario = 
+
+    public UsuarioLogueadoDTO registrarUsuario(UsuarioDTO usuarioDTO) {
+        Usuario usuario = UsuarioAdapter.toEntity(usuarioDTO);
         if (usuarioDTO == null) {
             throw new IllegalArgumentException("El DTO de usuario no puede ser nulo.");
         }
@@ -43,22 +43,28 @@ public class UsuarioBO {
             throw new IllegalStateException("Ya existe un usuario con este correo.");
         }
 
-        return usuariosDAO.registrarUsuario(usuarioDTO);
+        Usuario userRegistrado = usuariosDAO.registrarUsuario(usuario);
+
+        return UsuarioAdapter.toLogueadoDTO(userRegistrado);
+
     }
 
     /**
      * Actualizar datos de usuario.
      */
-    public Usuario actualizarUsuario(UsuarioDTO usuarioDTO) {
-        return usuariosDAO.actualizarUsuario(usuarioDTO);
+    public UsuarioLogueadoDTO actualizarUsuario(UsuarioLogueadoDTO usuarioDTO) {
+        Usuario usuario = UsuarioAdapter.toEntityLogueado(usuarioDTO);
+        usuario = usuariosDAO.actualizarUsuario(usuario);
+        return UsuarioAdapter.toLogueadoDTO(usuario);
     }
 
     /**
      * Eliminar usuario.
      */
-    public Usuario eliminarUsuario(UsuarioDTO usuarioDTO) {
-        String correoElectronico = usuarioDTO.getCorreoElectronico();
-        return usuariosDAO.eliminarUsuario(usuarioDTO, correoElectronico);
+    public UsuarioLogueadoDTO eliminarUsuario(UsuarioLogueadoDTO usuarioDTO) {
+        Usuario usuario = UsuarioAdapter.toEntityLogueado(usuarioDTO);
+        usuariosDAO.eliminarUsuario(usuario);
+        return UsuarioAdapter.toLogueadoDTO(usuario);
     }
 
     /**
@@ -69,7 +75,7 @@ public class UsuarioBO {
     }
 
     /**
-     * 
+     *
      * Obtener un usuario por correo
      */
     public Usuario obtenerUsuarioPorCorreo(String correo) {
@@ -79,4 +85,3 @@ public class UsuarioBO {
         return usuariosDAO.getUsuarioCorreo(correo);
     }
 }
-

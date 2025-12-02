@@ -1,5 +1,12 @@
-exceptions\BOException.class
+Adaptadores\PedidoAdapter.class
 BusinessObject\ProductoBO.class
+Adaptadores\UsuarioAdapter.class
+Adaptadores\ProductoAdapter.class
+exceptions\BOException.class
+DTOs\UsuarioDTO.class
 BusinessObject\UsuarioBO.class
 BusinessObjects\PedidoBO.class
+DTOs\PedidoDTO.class
+DTOs\ProductoDTO.class
+DTOs\UsuarioLogueadoDTO.class
 BusinessObjects\AutenticacionBO.class

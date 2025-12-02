@@ -18,7 +18,7 @@ public interface IUsuariosDAO {
     
     Usuario actualizarUsuario(Usuario usuario);
     
-    Usuario eliminarUsuario(Usuario usuario,  String correo);
+    Usuario eliminarUsuario(Usuario usuario);
     
     List<Usuario> consultarUsuarios();
     

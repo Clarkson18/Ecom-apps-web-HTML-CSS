@@ -35,6 +35,8 @@ public class PedidoDTO {
         this.fechaPedido = fechaPedido;
         this.id = id;
     }
+    
+    public PedidoDTO(){}
 
     public Usuario getUsuario() {
         return usuario;

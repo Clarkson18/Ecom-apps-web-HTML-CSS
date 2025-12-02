@@ -1,7 +1,9 @@
 package BusinessObjects;
 
+import Adaptadores.UsuarioAdapter;
+import DTOs.UsuarioLogueadoDTO;
 import definiciones.IPersistencia;
-import dtos.UsuarioLogueadoDTO;
+import entidades.Usuario;
 import implementaciones.Persistencia;
 import java.util.logging.Logger;
 /*
@@ -36,8 +38,9 @@ public class AutenticacionBO {
     public UsuarioLogueadoDTO iniciarSesion(String correo, String contraseña){
         
         try{
-            if(correo!=null || correo.isBlank() ||contraseña!=null || contraseña.isBlank()){
-                return persistencia.loginUsuario(correo,contraseña);
+            if((correo!=null && !correo.isBlank()) && (contraseña!=null && contraseña.isBlank())){
+                Usuario usuario = persistencia.loginUsuario(correo, contraseña);
+                return UsuarioAdapter.toLogueadoDTO(usuario);
             }
         
         }catch(Exception ex){

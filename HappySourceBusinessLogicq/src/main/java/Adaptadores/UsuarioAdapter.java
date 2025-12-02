@@ -4,9 +4,8 @@
  */
 package Adaptadores;
 
-import dtos.UsuarioDTO;
-import dtos.UsuarioLogueadoDTO;
-import entidades.Producto;
+import DTOs.UsuarioDTO;
+import DTOs.UsuarioLogueadoDTO;
 import entidades.Usuario;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,28 +15,47 @@ import java.util.List;
  * @author vv094
  */
 public class UsuarioAdapter {
-     public static UsuarioLogueadoDTO toDTO(Usuario usuario) {
-        UsuarioDTO dto = new UsuarioLogueadoDTO(
-        usuario.
-        );
-      
-    } 
 
-    public static Producto toEntity(UsuarioDTO dto) {
-        Producto usuario = new Producto();
-        usuario.setId(new org.bson.types.ObjectId(dto.getId()));
-        usuario.setNombre(dto.getNombre());
-        usuario.setDesripcionProducto(dto.getDesripcionProducto());
-        usuario.setPrecio(dto.getPrecio());
-        usuario.setCantidadExistencia(dto.getCantidadExistencia());
-        usuario.setCategoria(dto.getCategoria());
+    public static UsuarioLogueadoDTO toLogueadoDTO(Usuario usuario) {
+        UsuarioLogueadoDTO dto = new UsuarioLogueadoDTO(
+                usuario.getNombre(),
+                usuario.getCorreo(),
+                usuario.getId().toString(),
+                usuario.getRol(),
+                usuario.getDirecciones(),
+                usuario.getTelefono()
+        );
+        return dto;
+
+    }
+
+    public static Usuario toEntity(UsuarioDTO dto) {
+        Usuario usuario = new Usuario();
+
+        usuario.setNombre(dto.getNombreCompleto());
+        usuario.setCorreo(dto.getCorreoElectronico());
+        usuario.setRol(dto.getRol());
+        usuario.setDirecciones(dto.getDirecciones());
+        usuario.setTelefono(dto.getTelefono());
+
         return usuario;
     }
 
-    public static List<UsuarioDTO> toDTOList(List<Producto> usuarios) {
-        List<UsuarioDTO> dtoList = new ArrayList<>();
-        for (Producto usuario : usuarios) {
-            dtoList.add(toDTO(usuario));
+    public static Usuario toEntityLogueado(UsuarioLogueadoDTO dto) {
+        Usuario usuario = new Usuario();
+        usuario.setNombre(dto.getNombre());
+        usuario.setCorreo(dto.getCorreo());
+        usuario.setId(new org.bson.types.ObjectId(dto.getId()));
+        usuario.setRol(dto.getRol());
+        usuario.setDirecciones(dto.getDirecciones());
+        usuario.setTelefono(dto.getTelefono());
+        return usuario;
+    }
+
+    public static List<UsuarioLogueadoDTO> toDTOList(List<Usuario> usuarios) {
+        List<UsuarioLogueadoDTO> dtoList = new ArrayList<>();
+        for (Usuario usuario : usuarios) {
+            dtoList.add(toLogueadoDTO(usuario));
         }
         return dtoList;
     }

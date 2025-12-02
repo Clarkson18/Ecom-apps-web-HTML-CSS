@@ -17,14 +17,16 @@ public class UsuarioLogueadoDTO {
     private String correo;
     private String id;
     private List<String> direcciones;
+    private String telefono;
     private Rol rol;
 
-    public UsuarioLogueadoDTO(String nombre, String correo, String id, Rol rol, List<String> direcciones) {
+    public UsuarioLogueadoDTO(String nombre, String correo, String id, Rol rol, List<String> direcciones, String telefono) {
         this.nombre = nombre;
         this.correo = correo;
         this.id = id;
         this.rol = rol;
         this.direcciones = direcciones;
+        this.telefono = telefono;
     }
 
     public List<String> getDirecciones() {
@@ -65,5 +67,12 @@ public class UsuarioLogueadoDTO {
 
     public void setRol(Rol rol) {
         this.rol = rol;
+    }
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 }
