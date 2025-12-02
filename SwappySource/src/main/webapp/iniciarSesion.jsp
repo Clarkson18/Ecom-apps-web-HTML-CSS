@@ -11,7 +11,7 @@
   <head>
     <meta charset="utf-8">
     <title>Happy Source | Iniciar sesión</title>
-    <link rel="stylesheet" href="/Styles/forms.css">
+    <link rel="stylesheet" href="./styles/forms.css">
   </head>
 
   <body class="iniciarSesion">
@@ -31,7 +31,7 @@
 
           <button type="submit" class="botones">Iniciar sesión</button>
         </form>
-        <h4>¿No tienes una cuenta?  <a href="registro.jsp"> Crea una aquí</a></h4>
+        <h4>¿No tienes una cuenta?  <a href="registrarUsuario.jsp"> Crea una aquí</a></h4>
       </div>
     </div>
 

@@ -1,13 +1,15 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+    <%@include file="./fragmentos/Icon.jspf" %>
     <head>
         <meta charset="utf-8">
         <title>Happy Source | Catálogo</title>
-        <link rel="stylesheet" href="../Styles/styles.css">
+        <link rel="stylesheet" href="./styles/styles.css">
 
     </head>
     <body class="catalogoBody">
+        <%@include file="./fragmentos/header.jspf" %>
         <div class="CatalogoSubtitulo">
             <h1>Catálogo de productos </h1>
             <p>Conócelos y enamórate de ellos. </p>
@@ -16,7 +18,7 @@
             <h2 class="divisionSeccionVitaminas">Vitaminas y probióticos</h2>
             <div class="productos">
                 <div class="producto">
-                    <a class="displayProducto" href="preview_Producto.html">
+                    <a class="displayProducto" href="previewProducto.jsp">
                         <img src="https://media.ulta.com/i/ulta/2550466?w=800&$ProductCardNeutralBGLight$&h=800&fmt=auto" alt="vitamina1"></a>
                     <h3>Cápsulas de fibra Love Wellness</h3>
                     <p class="precio">$350.98</p>
@@ -76,7 +78,7 @@
             <h2 class="divisionGummies">Selección de gomitas</h2>
             <div class="productos">
                 <div class="producto">
-                    <a class="displayProducto" href="#">
+                    <a class="displayProducto" href="catalogo.jsp">
                         <img src="https://myrite.co/cdn/shop/products/DSC03508_BG_f03d5e39-92f0-4630-b3ca-29b55eac030f_2048x.jpg?v=1717655420" alt="vitamina1"></a>
                     <h3>Rite - kids gummies </h3>
                     <p class="precio">$350.98</p>
@@ -101,6 +103,7 @@
                 </div>
             </div>
         </section>
+            <%@include file="./fragmentos/footer.jspf" %>
     </body>
 </html>
 

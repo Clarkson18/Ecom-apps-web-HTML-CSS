@@ -6,7 +6,8 @@ abrilislas --%> <%@page contentType="text/html" pageEncoding="UTF-8"%>
   <head>
     <meta charset="utf-8" />
     <title>Happy Source | Producto</title>
-    <link rel="stylesheet" href="../Styles/styles.css" />
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <%@include file="./fragmentos/header.jspf" %>
   </head>
 
   <body>
@@ -50,5 +51,6 @@ abrilislas --%> <%@page contentType="text/html" pageEncoding="UTF-8"%>
         artificiales.
       </p>
     </section>
+    <%@include file="./fragmentos/footer.jspf" %>
   </body>
 </html>

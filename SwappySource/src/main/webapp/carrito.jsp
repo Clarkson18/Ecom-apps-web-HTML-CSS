@@ -72,7 +72,7 @@
 </style>
 </head>
 <body>
-  <!-- Header -->S
+  <!-- Header -->
 
   <main class="wrap">
     <h1 class="title">Carrito de Compras</h1>

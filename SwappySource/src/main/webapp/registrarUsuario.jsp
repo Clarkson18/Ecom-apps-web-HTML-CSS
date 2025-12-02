@@ -10,8 +10,7 @@
   <head>
     <meta charset="utf-8">
     <title>Happy Source | Registro</title>
-    <link rel="stylesheet" href="../Styles/forms.css">
-    <link rel="stylesheet" href="../Styles/styles.css">
+    <link rel="stylesheet" href="./styles/forms.css">
   </head>
   
   <body class="registroBody">
