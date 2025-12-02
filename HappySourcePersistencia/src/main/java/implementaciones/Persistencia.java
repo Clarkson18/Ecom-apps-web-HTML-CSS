@@ -5,10 +5,6 @@
 package implementaciones;
 
 import definiciones.IUsuariosDAO;
-import dtos.UsuarioLogueadoDTO;
-import dtos.PedidoDTO;
-import dtos.ProductoDTO;
-import dtos.UsuarioDTO;
 import entidades.Usuario;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -17,8 +13,6 @@ import utils.PassManager;
 import java.util.List;
 
 import Enumeradores.EstadoEnvio;
-import adaptadores.PedidoAdapter;
-import adaptadores.ProductoAdapter;
 import definiciones.IPersistencia;
 import definiciones.IProductoDAO;
 import entidades.Pedido;
@@ -40,31 +34,31 @@ public class Persistencia implements IPersistencia {
 
     // Metodos de usuario
     @Override
-    public UsuarioDTO registrarUsuario(UsuarioDTO usuarioDTO) {
+    public Usuario registrarUsuario(Usuario usuarioDTO) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from
-                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public UsuarioDTO actualizarUsuario() {
+    public Usuario actualizarUsuario() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from
-                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public UsuarioDTO eliminarUsuario() {
+    public Usuario eliminarUsuario() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from
-                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public List<UsuarioDTO> consultarUsuarios() {
+    public List<Usuario> consultarUsuarios() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from
-                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public UsuarioLogueadoDTO loginUsuario(String correo, String pass) {
+    public Usuario loginUsuario(String correo, String pass) {
         Usuario usuario = usuariosDAO.getUsuarioCorreo(correo);
 
         if (usuario == null) {
@@ -75,8 +69,7 @@ public class Persistencia implements IPersistencia {
 
         try {
             if (PassManager.verificarPassword(pass, password)) {
-                return new UsuarioLogueadoDTO(usuario.getNombre(), usuario.getCorreo(), usuario.getId().toString(),
-                        usuario.getRol(), usuario.getDirecciones());
+                return usuario;
             } else {
                 throw new IllegalArgumentException("Credenciales incorrectas");
 
@@ -92,62 +85,57 @@ public class Persistencia implements IPersistencia {
 
     // Metodos de producto
     @Override
-    public List<ProductoDTO> listaProductos() {
+    public List<Producto> listaProductos() {
         List<Producto> productos = productoDAO.listaProductos();
-        List<ProductoDTO> productosDTO = ProductoAdapter.toDTOList(productos);
-        return productosDTO;
+        return productos;
     }
 
     @Override
-    public ProductoDTO agregarProducto(ProductoDTO productoDTO) {
-        Producto producto = ProductoAdapter.toEntity(productoDTO);
+    public Producto agregarProducto(Producto producto) {
         Producto productoAgregado = productoDAO.agregarProducto(producto);
-        return ProductoAdapter.toDTO(productoAgregado);
+        return productoAgregado;
     }
 
     @Override
-    public ProductoDTO actualizarProducto(ProductoDTO productoDTO) {
-        Producto producto = ProductoAdapter.toEntity(productoDTO);
+    public Producto actualizarProducto(Producto producto) {
         Producto productoActualizado = productoDAO.actualizarProducto(producto);
-        return ProductoAdapter.toDTO(productoActualizado);
+        return productoActualizado;
     }
 
     @Override
-    public ProductoDTO eliminarProducto(ProductoDTO productoDTO) {
-        Producto producto = ProductoAdapter.toEntity(productoDTO);                                                              
+    public Producto eliminarProducto(Producto producto) {
         Producto productoEliminado = productoDAO.eliminarProducto(producto);
-        return ProductoAdapter.toDTO(productoEliminado);
+        return productoEliminado;
     }
 
     @Override
-    public ProductoDTO obtenerProductoPorId(String id) {
+    public Producto obtenerProductoPorId(String id) {
         Producto producto = productoDAO.obtenerProductoPorId(id);
-        return ProductoAdapter.toDTO(producto);
+        return producto;
     }
 
     @Override
-    public PedidoDTO actualizarEstadoPedido(String idPedido, EstadoEnvio nuevoEstado) {
+    public Pedido actualizarEstadoPedido(String idPedido, EstadoEnvio nuevoEstado) {
         Pedido pedidoActualizado = new PedidosDAO().actualizarEstadoPedido(idPedido, nuevoEstado);
-        PedidoDTO pedidoDTO = PedidoAdapter.toDTO(pedidoActualizado);
-        return pedidoDTO;
+        return pedidoActualizado;
     }
 
     @Override
-    public List<PedidoDTO> consultarPedidos(String idUsuario) {
-       List<Pedido> pedidos = new PedidosDAO().consultarPedidos(idUsuario);
-       return PedidoAdapter.toDTOList(pedidos);
+    public List<Pedido> consultarPedidos(String idUsuario) {
+        List<Pedido> pedidos = new PedidosDAO().consultarPedidos(idUsuario);
+        return pedidos;
     }
 
     @Override
-    public PedidoDTO crearPedido(Pedido pedido) {
+    public Pedido crearPedido(Pedido pedido) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'crearPedido'");
     }
 
     @Override
-    public PedidoDTO obtenerPedidoPorId(String idPedido) {
+    public Pedido obtenerPedidoPorId(String idPedido) {
         Pedido pedido = new PedidosDAO().obtenerPedidoPorId(idPedido);
-        return PedidoAdapter.toDTO(pedido);
+        return pedido;
     }
 
 }

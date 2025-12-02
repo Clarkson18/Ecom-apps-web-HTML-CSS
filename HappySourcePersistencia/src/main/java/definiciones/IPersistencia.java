@@ -4,14 +4,12 @@
  */
 package definiciones;
 
-import dtos.UsuarioLogueadoDTO;
-import entidades.Pedido;
-import dtos.PedidoDTO;
-import dtos.ProductoDTO;
-import dtos.UsuarioDTO;
 import java.util.List;
 
 import Enumeradores.EstadoEnvio;
+import entidades.Pedido;
+import entidades.Producto;
+import entidades.Usuario;
 
 /**
  *
@@ -19,26 +17,26 @@ import Enumeradores.EstadoEnvio;
  */
 public interface IPersistencia {
     //Usuario methods
-    UsuarioDTO registrarUsuario(UsuarioDTO usuarioDTO);
+    Usuario registrarUsuario(Usuario usuarioDTO);
     
-    UsuarioDTO actualizarUsuario();
+    Usuario actualizarUsuario();
     
-    UsuarioDTO eliminarUsuario();
+    Usuario eliminarUsuario();
     
-    List<UsuarioDTO> consultarUsuarios();
+    List<Usuario> consultarUsuarios();
 
-    UsuarioLogueadoDTO loginUsuario(String correo, String contraseña);
+    Usuario loginUsuario(String correo, String contraseña);
 
     //Producto methods
-    List<ProductoDTO> listaProductos();
-    ProductoDTO agregarProducto(ProductoDTO productoDTO);
-    ProductoDTO actualizarProducto(ProductoDTO productoDTO);
-    ProductoDTO eliminarProducto(ProductoDTO productoDTO);
-    ProductoDTO obtenerProductoPorId(String id);
+    List<Producto> listaProductos();
+    Producto agregarProducto(Producto productoDTO);
+    Producto actualizarProducto(Producto productoDTO);
+    Producto eliminarProducto(Producto productoDTO);
+    Producto obtenerProductoPorId(String id);
 
     //Pedido methods
-    public PedidoDTO actualizarEstadoPedido(String idPedido, EstadoEnvio nuevoEstado);
-    public List<PedidoDTO> consultarPedidos(String idUsuario);
-    public PedidoDTO crearPedido(Pedido pedido);
-    public PedidoDTO obtenerPedidoPorId(String idPedido);
+    public Pedido actualizarEstadoPedido(String idPedido, EstadoEnvio nuevoEstado);
+    public List<Pedido> consultarPedidos(String idUsuario);
+    public Pedido crearPedido(Pedido pedido);
+    public Pedido obtenerPedidoPorId(String idPedido);
 }

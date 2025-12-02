@@ -17,7 +17,9 @@ import java.util.List;
  */
 public class UsuarioAdapter {
      public static UsuarioLogueadoDTO toDTO(Usuario usuario) {
-        UsuarioDTO dto = new UsuarioLogueadoDTO();
+        UsuarioDTO dto = new UsuarioLogueadoDTO(
+        usuario.
+        );
       
     } 
 
