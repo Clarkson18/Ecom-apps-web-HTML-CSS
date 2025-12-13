@@ -22,7 +22,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class AdministrativeServlet extends HttpServlet {
 
     private UsuarioBO usuarioBO = new UsuarioBO(new UsuariosDAO());
-    private PedidoBO pedidoBO = new PedidoBO();
+    private final PedidoBO pedidoBO = PedidoBO.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

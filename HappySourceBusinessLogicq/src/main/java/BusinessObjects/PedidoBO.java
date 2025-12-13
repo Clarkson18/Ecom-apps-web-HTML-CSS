@@ -23,7 +23,7 @@ public class PedidoBO {
     }
 
     // getInstance() DEBE ser static
-    public static synchronized PedidoBO getInstance() {
+    public static PedidoBO getInstance() {
         if (instance == null) {
             instance = new PedidoBO();
         }
