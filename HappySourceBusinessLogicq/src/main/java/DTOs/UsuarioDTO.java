@@ -21,6 +21,28 @@ public class UsuarioDTO {
     private List<String> direcciones;
    // private MetodoPago metodoPago;
 
+    public UsuarioDTO(String nombreCompleto, String alias, Rol rol, String correoElectronico, String telefono, String password, List<String> direcciones) {
+        this.nombreCompleto = nombreCompleto;
+        this.alias = alias;
+        this.rol = rol;
+        this.correoElectronico = correoElectronico;
+        this.telefono = telefono;
+        this.password = password;
+        this.direcciones = direcciones;
+    }
+    
+
+    public UsuarioDTO(String nombreCompleto, String correoElectronico, String telefono, String password, List<String> direcciones) {
+        this.nombreCompleto = nombreCompleto;
+        this.alias = alias;
+        this.rol = rol;
+        this.correoElectronico = correoElectronico;
+        this.telefono = telefono;
+        this.password = password;
+        this.direcciones = direcciones;
+    }    
+    
+
     public String getNombreCompleto() {
         return nombreCompleto;
     }

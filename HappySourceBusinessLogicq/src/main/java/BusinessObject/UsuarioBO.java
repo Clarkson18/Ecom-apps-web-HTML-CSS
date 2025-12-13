@@ -5,6 +5,7 @@ import DTOs.UsuarioDTO;
 import DTOs.UsuarioLogueadoDTO;
 import definiciones.IUsuariosDAO;
 import entidades.Usuario;
+import implementaciones.UsuariosDAO;
 import java.util.List;
 
 /*
@@ -17,10 +18,9 @@ import java.util.List;
  */
 public class UsuarioBO {
 
-    private final IUsuariosDAO usuariosDAO;
+    private final IUsuariosDAO usuariosDAO = new UsuariosDAO();
 
-    public UsuarioBO(IUsuariosDAO usuariosDAO) {
-        this.usuariosDAO = usuariosDAO;
+    public UsuarioBO() {
     }
 
     public UsuarioLogueadoDTO registrarUsuario(UsuarioDTO usuarioDTO) {
