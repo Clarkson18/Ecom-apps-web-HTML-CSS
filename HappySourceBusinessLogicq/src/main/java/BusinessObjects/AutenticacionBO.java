@@ -2,53 +2,24 @@ package BusinessObjects;
 
 import Adaptadores.UsuarioAdapter;
 import DTOs.UsuarioLogueadoDTO;
-import definiciones.IPersistencia;
 import entidades.Usuario;
 import implementaciones.Persistencia;
 import java.util.logging.Logger;
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 
-/**
- *
- * @author abrilislas
- */
 public class AutenticacionBO {
-    
-    AutenticacionBO autenticacionBO;
-    IPersistencia persistencia = new Persistencia();
-    private String MENSAJE_ERROR="Ha ocurrido un error al autenticar el usuario";
+
+    private final Persistencia persistencia = new Persistencia();
     private static final Logger LOG = Logger.getLogger(AutenticacionBO.class.getName());
-    
-    
-    public AutenticacionBO getInstance(){
-        
-        if (this.autenticacionBO==null){
-            this.autenticacionBO = new AutenticacionBO();
-        }
-        return autenticacionBO;
-    }
-    
-    public AutenticacionBO(){
-        getInstance();
-    }
-    
-    public UsuarioLogueadoDTO iniciarSesion(String correo, String contraseña){
-        
-        try{
-            if((correo!=null && !correo.isBlank()) && (contraseña!=null && contraseña.isBlank())){
+
+    public UsuarioLogueadoDTO iniciarSesion(String correo, String contraseña) {
+        try {
+            if (correo != null && !correo.isBlank() && contraseña != null && !contraseña.isBlank()) {
                 Usuario usuario = persistencia.loginUsuario(correo, contraseña);
                 return UsuarioAdapter.toLogueadoDTO(usuario);
             }
-        
-        }catch(Exception ex){
-            LOG.severe(MENSAJE_ERROR);
+        } catch (Exception ex) {
+            LOG.severe("Ha ocurrido un error al autenticar el usuario: " + ex.getMessage());
         }
         return null;
     }
 }
-    
-    
-   

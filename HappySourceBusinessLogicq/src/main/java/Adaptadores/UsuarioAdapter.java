@@ -37,6 +37,7 @@ public class UsuarioAdapter {
         usuario.setRol(dto.getRol());
         usuario.setDirecciones(dto.getDirecciones());
         usuario.setTelefono(dto.getTelefono());
+        usuario.setPassword(dto.getPassword());
 
         return usuario;
     }

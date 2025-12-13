@@ -6,48 +6,40 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="es">
     <head>
-        <meta charset="utf-8">
-        <title>Happy Source (Admin)| Managment tab</title>
+        <meta charset="UTF-8">
+        <title>Happy Source | Admin</title>
         <link rel="stylesheet" href="styles/administradorStyles.css">
     </head>
     <body>
-        <div class="mainContainer">
-            <nav class="header">
-                <h2 id="logo">Happy Source (Admin pane).</h2>
-            </nav>
 
-            <center><h1>Bienvenido, ${usuario.nombre}</h1></center>
+        <nav class="header">
+            <h2 id="logo">
+                <a href="panelAdministrador.jsp" class="mainLink">Happy Source</a>
+                <span class="adminTag">Admin panel</span>
+            </h2>
 
-            <div class="mainContentDivs">
+            <div class="headerActions">
+                <a class="logoutBtn" href="<%= request.getContextPath()%>/LogoutServlet">Cerrar sesión</a>
+            </div>
+        </nav>
 
-                <div class="OptionPane">
-                    <h2 class="title">Administración de usuarios</h2>
-                    <h4 class="subtitle">Selecciona una opción</h4>
-                    <div class="botonesContainer">
-                        <form action="<%= request.getContextPath() %>/AdministrativeServlet" method="get">
-                            <button type="submit" name="accion" value="getUsuarios">Consultar usuarios</button>
-                            <button type="submit" name="accion" value="updateUsuario">Actualizar usuario</button>
-                            <button type="submit" name="accion" value="deleteUsuario">Eliminar usuario</button>
-                            <button type="submit" name="accion" value="getPedidos">Consultar pedidos</button>
-                        </form>
-                    </div>
-                </div>
+        <div class="admin-container">
+            <div class="admin-card">
+                <h1 class="admin-title">Administración</h1>
+                <p class="admin-subtitle">Selecciona un módulo</p>
 
-                <div class="OptionPane">
-                    <h2 class="title">Administración de productos</h2>
-                    <h4 class="subtitle">Selecciona una opción</h4>
-                    <div class="botonesContainer">
-                        <form action="<%= request.getContextPath() %>/AdministrativeServlet" method="get">
-                            <button type="submit" name="accion" value="addProducto">Agregar producto</button>
-                            <button type="submit" name="accion" value="deleteProductos">Eliminar producto</button>
-                            <button type="submit" name="accion" value="updateProductos">Actualizar producto</button>
-                            <button type="submit" name="accion" value="getProductos">Consultar productos</button>
-                        </form>
-                    </div>
-                </div>
+                <form action="<%= request.getContextPath()%>/AdministrativeServlet" method="get" class="botonesContainer">
+                    <button class="admin-btn" type="submit" name="accion" value="getUsuarios">Gestionar usuarios</button>
+                    <button class="admin-btn" type="submit" name="accion" value="getProductos">Gestionar productos</button>
+                    <button class="admin-btn" type="submit" name="accion" value="getPedidos">Gestionar pedidos</button>
+                    <button class="admin-btn" type="submit" name="accion" value="getResenas">Gestionar reseñas</button>
+                </form>
+            </div>
         </div>
 
     </body>
 </html>
+
+

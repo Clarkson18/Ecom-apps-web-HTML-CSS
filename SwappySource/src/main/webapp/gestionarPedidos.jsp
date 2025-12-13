@@ -2,115 +2,74 @@
     Document   : gestionarPedidos
     Description: Vista principal para la gestión de pedidos del administrador
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="es">
     <head>
-        <meta charset="utf-8">
-        <title>Happy Source (Admin) | Gestión de pedidos</title>
+        <meta charset="UTF-8">
+        <title>Admin | Pedidos</title>
         <link rel="stylesheet" href="styles/administradorStyles.css">
     </head>
     <body>
-        <div class="mainContainer">
-            <nav class="header">
-                <h2 id="logo">Happy Source (Admin pane).</h2>
-            </nav>
 
-            <center><h1>Gestión de pedidos</h1></center>
+        <nav class="header">
+            <h2 id="logo">
+                <a href="panelAdministrador.jsp" class="mainLink">Happy Source</a>
+                <span class="adminTag">Admin panel</span>
+            </h2>
+            <div class="headerActions">
+                <a class="logoutBtn" href="<%= request.getContextPath()%>/LogoutServlet">Cerrar sesión</a>
+            </div>
+        </nav>
 
-            <div class="mainContentDivs gestionar-pedidos-main">
-                <div class="OptionPane OptionPane--fullwidth">
-                    <h2 class="title">Pedidos registrados</h2>
-                    <h4 class="subtitle">Revisa el historial de pedidos y actualiza su estado.</h4>
+        <div class="admin-container">
+            <div class="admin-card">
+                <h1 class="admin-title">Gestión de pedidos</h1>
+                <p class="admin-subtitle">Administra los pedidos realizados por los clientes.</p>
 
-                    <!-- Filtros básicos (puro front) -->
-                    <div class="filtros-pedidos">
-                        <div class="filtro">
-                            <label for="filtroEstado">Estado:</label>
-                            <select id="filtroEstado" name="estado">
-                                <option value="">Todos</option>
-                                <option value="PENDIENTE">Pendiente</option>
-                                <option value="EN_PROCESO">En proceso</option>
-                                <option value="ENVIADO">Enviado</option>
-                                <option value="ENTREGADO">Entregado</option>
-                            </select>
-                        </div>
-
-                        <div class="filtro">
-                            <label for="filtroCliente">Cliente:</label>
-                            <input type="text" id="filtroCliente" name="cliente"
-                                   placeholder="Nombre o correo del cliente">
-                        </div>
-
-                        <button type="button" class="btn-filtrar">Filtrar</button>
-                    </div>
-
-                    <!-- Tabla principal de gestión de pedidos -->
-                    <div class="tablaPedidosWrapper">
-                        <table class="tabla-pedidos-admin">
-                            <thead>
+                <div class="tablaAdminWrapper">
+                    <table class="tabla-admin">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Usuario</th>
+                                <th>Fecha</th>
+                                <th>Total</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="p" items="${pedidos}">
                                 <tr>
-                                    <th>ID pedido</th>
-                                    <th>Cliente</th>
-                                    <th>Fecha</th>
-                                    <th>Estado</th>
-                                    <th>Total</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Filas de ejemplo. Después le ponemos datos reales(PedidoDTO). -->
-                                <tr>
-                                    <td>#1001</td>
-                                    <td>Juan Pérez</td>
-                                    <td>18/11/2025</td>
+                                    <td>${p.id}</td>
+                                    <td>${p.usuarioCorreo}</td>
+                                    <td>${p.fecha}</td>
+                                    <td>$${p.total}</td>
+                                    <td>${p.estado}</td>
                                     <td>
-                                        <span class="estado-badge estado-pendiente">Pendiente</span>
-                                    </td>
-                                    <td>$350.00</td>
-                                    <td>
-                                        <button type="button" class="btn-tabla">Ver detalle</button>
-                                        <button type="button" class="btn-tabla">Marcar como enviado</button>
+                                        <form action="<%= request.getContextPath()%>/AdministrativeServlet" method="post">
+                                            <input type="hidden" name="accion" value="updateEstadoPedido"/>
+                                            <input type="hidden" name="idPedido" value="${p.id}"/>
+                                            <select class="table-select" name="estado">
+                                                <option ${p.estado == 'PENDIENTE' ? 'selected' : ''}>PENDIENTE</option>
+                                                <option ${p.estado == 'ENVIADO' ? 'selected' : ''}>ENVIADO</option>
+                                                <option ${p.estado == 'ENTREGADO' ? 'selected' : ''}>ENTREGADO</option>
+                                            </select>
+                                            <button class="table-btn" type="submit">Actualizar</button>
+                                        </form>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>#1002</td>
-                                    <td>María López</td>
-                                    <td>17/11/2025</td>
-                                    <td>
-                                        <span class="estado-badge estado-en-proceso">En proceso</span>
-                                    </td>
-                                    <td>$520.00</td>
-                                    <td>
-                                        <button type="button" class="btn-tabla">Ver detalle</button>
-                                        <button type="button" class="btn-tabla">Marcar como enviado</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>#1003</td>
-                                    <td>Carlos Ruiz</td>
-                                    <td>16/11/2025</td>
-                                    <td>
-                                        <span class="estado-badge estado-entregado">Entregado</span>
-                                    </td>
-                                    <td>$210.00</td>
-                                    <td>
-                                        <button type="button" class="btn-tabla">Ver detalle</button>
-                                        <button type="button" class="btn-tabla">Ver comprobante</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="botonesContainer" style="margin-top: 20px;">
-                        <button type="button" onclick="window.location.href = 'panelAdministrador.jsp'">
-                            Volver al panel principal
-                        </button>
-                    </div>
+                            </c:forEach>
+                        </tbody>
+                    </table>
                 </div>
+
+                <a class="adminBack" href="panelAdministrador.jsp">← Volver</a>
             </div>
         </div>
+
     </body>
 </html>
+

@@ -18,14 +18,14 @@ import org.bson.types.ObjectId;
 public class UsuariosDAO implements IUsuariosDAO {
 
     private final String NOMBRE_COLECCION = "Usuarios";
-    private final String CAMPO_NOMBRES = "nombres";
+    private final String CAMPO_NOMBRES = "nombre";
     private final String CAMPO_CORREO = "correo";
-    private final String CAMPO_CONTRASEÑA = "contraseña";
+    private final String CAMPO_CONTRASEÑA = "password";
     private final String CAMPO_TELEFONO = "telefono";
     private final String CAMPO_DIRECCION = "direcciones";
     private final String CAMPO_ROL = "rol";
 
-    private static UsuariosDAO instance;    
+    private static UsuariosDAO instance;
 
     public static UsuariosDAO getInstance() {
         if (instance == null) {
@@ -33,7 +33,7 @@ public class UsuariosDAO implements IUsuariosDAO {
         }
         return instance;
     }
-    
+
     @Override
     public Usuario registrarUsuario(Usuario Usuario) {
         try {
@@ -43,7 +43,11 @@ public class UsuariosDAO implements IUsuariosDAO {
             usuario.setId(new ObjectId());
             usuario.setNombre(Usuario.getNombre());
             usuario.setCorreo(Usuario.getCorreo());
-            usuario.setPassword(Usuario.getPassword());
+            try {
+                usuario.setPassword(utils.PassManager.hashPassword(Usuario.getPassword()));
+            } catch (Exception e) {
+                throw new RuntimeException("No se pudo hashear la contraseña", e);
+            }
             usuario.setTelefono(Usuario.getTelefono());
             usuario.setDirecciones(Usuario.getDirecciones());
             usuario.setRol(Usuario.getRol());
@@ -75,27 +79,43 @@ public class UsuariosDAO implements IUsuariosDAO {
     }
 
     @Override
-    public Usuario actualizarUsuario(Usuario Usuario) {
-                try {
+    public Usuario actualizarUsuario(Usuario usuario) {
+        try {
             MongoCollection<Usuario> coleccion = crearConexion();
 
+            // Armamos el update sin password (por defecto)
             Document update = new Document()
-                .append(CAMPO_NOMBRES, Usuario.getNombre())
-                .append(CAMPO_CONTRASEÑA, Usuario.getPassword())
-                .append(CAMPO_TELEFONO, Usuario.getTelefono())
-                .append(CAMPO_DIRECCION, Usuario.getDirecciones())
-                .append(CAMPO_ROL, Usuario.getRol());
+                    .append(CAMPO_NOMBRES, usuario.getNombre())
+                    .append(CAMPO_TELEFONO, usuario.getTelefono())
+                    .append(CAMPO_DIRECCION, usuario.getDirecciones())
+                    .append(CAMPO_ROL, usuario.getRol());
+
+            // Solo si viene una contraseña nueva (texto plano), la hasheamos y actualizamos
+            if (usuario.getPassword() != null && !usuario.getPassword().isBlank()) {
+                try {
+                    update.append(CAMPO_CONTRASEÑA, utils.PassManager.hashPassword(usuario.getPassword()));
+                } catch (Exception e) {
+                    throw new RuntimeException("No se pudo hashear la contraseña", e);
+                }
+            }
 
             Document updateDoc = new Document("$set", update);
 
             FindOneAndUpdateOptions opciones = new FindOneAndUpdateOptions()
-                .returnDocument(ReturnDocument.AFTER);
+                    .upsert(false)
+                    .returnDocument(ReturnDocument.AFTER);
 
-            return coleccion.findOneAndUpdate(
-                Filters.eq(CAMPO_CORREO, Usuario.getCorreo()),
-                updateDoc,
-                opciones
+            Usuario actualizado = coleccion.findOneAndUpdate(
+                    Filters.eq(CAMPO_CORREO, usuario.getCorreo()),
+                    updateDoc,
+                    opciones
             );
+
+            if (actualizado == null) {
+                throw new RuntimeException("No se encontró usuario con correo: " + usuario.getCorreo());
+            }
+
+            return actualizado;
 
         } catch (Exception e) {
             System.err.println("Error al actualizar usuario: " + e.getMessage());
@@ -110,7 +130,7 @@ public class UsuariosDAO implements IUsuariosDAO {
 
             return coleccion.findOneAndDelete(Filters.eq(CAMPO_CORREO, usuario.getCorreo()));
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             System.err.println("Error al eliminar usuario: " + e.getMessage());
             throw new RuntimeException("Error al eliminar usuario", e);
         }

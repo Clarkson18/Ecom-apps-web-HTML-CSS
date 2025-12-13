@@ -20,15 +20,16 @@
       <div class="contenido">
         <h2>Iniciar sesión</h2>
         <h4>Ingresa tus credenciales</h4>
-        <form action="LoginServlet">
+        <form action="<%= request.getContextPath() %>/LoginServlet" method="post">
           <label for="correo-electronico">Correo: </label>
-          <input id="correo-electronico" name="correo-electronico" class= "correo-electronico" type="text" placeholder="Abril Islas" required autocomplete="off"/>
+          <input id="correo-electronico" name="correo-electronico" class= "correo-electronico" type="text" placeholder="" required autocomplete="off"/>
 
           <label for="usuario">Contraseña: </label>
           <input id="passwordUsuario" name="passwordUsuario" type="password" placeholder="" required autocomplete="off"/>
         
           <a href="cambiar_password">¿Has olvidado tu contraseña?</a>
 
+          <p style="color:red;">${error}</p>
           <button type="submit" class="botones">Iniciar sesión</button>
         </form>
         <h4>¿No tienes una cuenta?  <a href="registrarUsuario.jsp"> Crea una aquí</a></h4>

@@ -2,47 +2,43 @@ package BusinessObjects;
 
 import Enumeradores.EstadoEnvio;
 import definiciones.IPedidosDAO;
-import definiciones.IPersistencia;
 import entidades.Pedido;
 import implementaciones.PedidosDAO;
-import implementaciones.Persistencia;
 import java.util.List;
 import java.util.logging.Logger;
 
-/**
- *
- * @author abrilislas
- */
 public class PedidoBO {
-    
-    IPedidosDAO pedidosDAO = new PedidosDAO();
-    PedidoBO pedidoBO;
-    private static final Logger LOG = Logger.getLogger(AutenticacionBO.class.getName());
-    
-    
-    public PedidoBO getInstance(){
-        
-        if (this.pedidoBO==null){
-            this.pedidoBO = new PedidoBO();
-        }
-        return pedidoBO;
+
+    private static final Logger LOG = Logger.getLogger(PedidoBO.class.getName());
+
+    // Singleton
+    private static PedidoBO instance;
+
+    // DAO
+    private final IPedidosDAO pedidosDAO;
+
+    // Constructor privado: NO debe llamar a getInstance()
+    private PedidoBO() {
+        this.pedidosDAO = new PedidosDAO();
     }
-    
-    public PedidoBO(){
-        getInstance();
+
+    // getInstance() DEBE ser static
+    public static synchronized PedidoBO getInstance() {
+        if (instance == null) {
+            instance = new PedidoBO();
+        }
+        return instance;
     }
 
     public Pedido actualizarEstadoPedido(String idPedido, EstadoEnvio nuevoEstado) {
-
         if (idPedido == null || idPedido.isBlank()) {
-            throw new IllegalArgumentException("El ID del pedido no puede ser nulo o vacío.");
+            throw new IllegalArgumentException("ID inválido");
         }
         if (nuevoEstado == null) {
-            throw new IllegalArgumentException("El nuevo estado no puede ser nulo.");
+            throw new IllegalArgumentException("Estado inválido");
         }
 
         Pedido pedidoActual = pedidosDAO.obtenerPedidoPorId(idPedido);
-
         if (pedidoActual == null) {
             throw new RuntimeException("No existe un pedido con ese ID.");
         }
@@ -53,11 +49,11 @@ public class PedidoBO {
 
         return pedidosDAO.actualizarEstadoPedido(idPedido, nuevoEstado);
     }
-    
+
     public List<Pedido> consultarPedidos() {
         return pedidosDAO.consultarTodosLosPedidos();
     }
-    
+
     public Pedido crearPedido(Pedido pedido) {
         if (pedido == null) {
             throw new IllegalArgumentException("El pedido no puede ser nulo.");
@@ -70,10 +66,9 @@ public class PedidoBO {
         }
 
         pedido.setEstadoEnvio(EstadoEnvio.PROCESANDO_PAGO);
-
         return pedidosDAO.crearPedido(pedido);
     }
-    
+
     public Pedido obtenerPedidoPorId(String idPedido) {
         if (idPedido == null || idPedido.isBlank()) {
             throw new IllegalArgumentException("El ID del pedido no puede ser nulo o vacío.");
@@ -81,8 +76,3 @@ public class PedidoBO {
         return pedidosDAO.obtenerPedidoPorId(idPedido);
     }
 }
-
-    
-    
-    
-
