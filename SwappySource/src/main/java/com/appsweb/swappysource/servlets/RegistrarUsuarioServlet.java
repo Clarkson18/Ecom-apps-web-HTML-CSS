@@ -90,15 +90,17 @@ public class RegistrarUsuarioServlet extends HttpServlet {
         List<String> direcciones = new LinkedList<>();
         direcciones.add(direccion);
         
-        UsuarioDTO newUsuario =  new UsuarioDTO(nombre,correo,telefono,password,direcciones);
+        UsuarioDTO newUsuario =  new UsuarioDTO(
+            nombre,correo,telefono,password,direcciones
+        );
                 
        try{
            usuarioBO.registrarUsuario(newUsuario);
+           response.sendRedirect(request.getContextPath() + "/iniciarSesion.jsp");
        }catch(Exception e){
            e.getCause();
+           response.sendRedirect(request.getContextPath() + "/pantallaError.html");
        }
-        processRequest(request, response);
-        response.sendRedirect(request.getContextPath() + "/iniciarSesion.jsp");
     }
 
     /**

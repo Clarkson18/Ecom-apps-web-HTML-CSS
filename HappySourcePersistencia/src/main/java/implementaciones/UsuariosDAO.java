@@ -44,6 +44,7 @@ public class UsuariosDAO implements IUsuariosDAO {
             usuario.setNombre(Usuario.getNombre());
             usuario.setCorreo(Usuario.getCorreo());
             try {
+                System.out.println(usuario.getPassword());
                 usuario.setPassword(utils.PassManager.hashPassword(Usuario.getPassword()));
             } catch (Exception e) {
                 throw new RuntimeException("No se pudo hashear la contraseña", e);

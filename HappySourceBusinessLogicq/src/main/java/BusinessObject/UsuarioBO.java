@@ -23,7 +23,7 @@ public class UsuarioBO {
     public UsuarioBO() {
     }
 
-    public UsuarioLogueadoDTO registrarUsuario(UsuarioDTO usuarioDTO) {
+    public void registrarUsuario(UsuarioDTO usuarioDTO) {
         Usuario usuario = UsuarioAdapter.toEntity(usuarioDTO);
         if (usuarioDTO == null) {
             throw new IllegalArgumentException("El DTO de usuario no puede ser nulo.");
@@ -45,7 +45,7 @@ public class UsuarioBO {
 
         Usuario userRegistrado = usuariosDAO.registrarUsuario(usuario);
 
-        return UsuarioAdapter.toLogueadoDTO(userRegistrado);
+        //return UsuarioAdapter.;
 
     }
 

@@ -18,7 +18,9 @@
       <div class="contenido">
         <h2>Crear cuenta</h2>
         <h4>Ingresa tus datos</h4>
-        <form id="registroForm" action="/RegistrarUsuarioServlet" method="POST">
+        
+        <form id="registroForm" action="<%= request.getContextPath() %>/RegistrarUsuarioServlet" method="POST">
+            
           <label>Nombre:</label>
           <input type="text" name="nombre" required>
 

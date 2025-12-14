@@ -20,6 +20,7 @@
       <div class="contenido">
         <h2>Iniciar sesión</h2>
         <h4>Ingresa tus credenciales</h4>
+        
         <form action="<%= request.getContextPath() %>/LoginServlet" method="post">
           <label for="correo-electronico">Correo: </label>
           <input id="correo-electronico" name="correo-electronico" class= "correo-electronico" type="text" placeholder="" required autocomplete="off"/>
