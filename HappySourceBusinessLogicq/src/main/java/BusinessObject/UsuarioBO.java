@@ -20,7 +20,7 @@ public class UsuarioBO {
     private final IUsuariosDAO usuariosDAO;
 
     public UsuarioBO(IUsuariosDAO usuariosDAO) {
-        this.usuariosDAO = usuariosDAO;
+       this.usuariosDAO = usuariosDAO;
     }
 
     public UsuarioLogueadoDTO registrarUsuario(UsuarioDTO usuarioDTO) {
