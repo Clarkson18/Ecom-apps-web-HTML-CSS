@@ -24,6 +24,7 @@ public class ClientesResource {
     private static final String SESSION_CLIENTE = "cliente";
 
     public static class RegistroRequest {
+
         public String nombre;
         public String correo;
         public String telefono;
@@ -33,15 +34,19 @@ public class ClientesResource {
     }
 
     public static class LoginRequest {
+
         public String correo;
         public String password;
     }
 
     public static class ApiResponse {
+
         public boolean ok;
         public String message;
 
-        public ApiResponse() {}
+        public ApiResponse() {
+        }
+
         public ApiResponse(boolean ok, String message) {
             this.ok = ok;
             this.message = message;
@@ -49,6 +54,7 @@ public class ClientesResource {
     }
 
     public static class ClienteResponse {
+
         public String id;
         public String nombre;
         public String correo;
@@ -59,6 +65,24 @@ public class ClientesResource {
 
     private String safe(String s) {
         return (s == null) ? "" : s.trim();
+    }
+
+    public static class LoginResponse {
+
+        public boolean ok;
+        public String message;
+        public ClienteResponse usuario;
+        public String redirect;
+
+        public LoginResponse() {
+        }
+
+        public LoginResponse(boolean ok, String message, ClienteResponse usuario, String redirect) {
+            this.ok = ok;
+            this.message = message;
+            this.usuario = usuario;
+            this.redirect = redirect;
+        }
     }
 
     private ClienteResponse toClienteResponse(Usuario u) {
@@ -73,7 +97,9 @@ public class ClientesResource {
     }
 
     private boolean passwordsMatch(String raw, String stored) {
-        if (raw == null || stored == null) return false;
+        if (raw == null || stored == null) {
+            return false;
+        }
 
         if (stored.contains(":")) {
             try {
@@ -129,7 +155,9 @@ public class ClientesResource {
         nuevo.setTelefono(telefono);
 
         List<String> direcciones = new ArrayList<>();
-        if (!direccion.isBlank()) direcciones.add(direccion);
+        if (!direccion.isBlank()) {
+            direcciones.add(direccion);
+        }
         nuevo.setDirecciones(direcciones);
 
         nuevo.setRol(Rol.CLIENTE);
@@ -169,16 +197,22 @@ public class ClientesResource {
                     .build();
         }
 
-        if (u.getRol() != Rol.CLIENTE) {
-            return Response.status(Response.Status.FORBIDDEN)
-                    .entity(new ApiResponse(false, "Este acceso es solo para clientes."))
-                    .build();
+        HttpSession session = servletRequest.getSession(true);
+        session.setAttribute("usuario", u);
+
+        String redirect;
+        if (u.getRol() == Rol.ADMIN) {
+            session.setAttribute("admin", u);
+            session.removeAttribute(SESSION_CLIENTE);
+            redirect = "panelAdministrador.jsp";
+        } else {
+            session.setAttribute(SESSION_CLIENTE, u);
+            session.removeAttribute("admin");
+            redirect = "catalogo.jsp";
         }
 
-        HttpSession session = servletRequest.getSession(true);
-        session.setAttribute(SESSION_CLIENTE, u);
-
-        return Response.ok(toClienteResponse(u)).build();
+        ClienteResponse cliente = toClienteResponse(u);
+        return Response.ok(new LoginResponse(true, "Sesión iniciada.", cliente, redirect)).build();
     }
 
     @POST
@@ -187,9 +221,12 @@ public class ClientesResource {
         HttpSession session = servletRequest.getSession(false);
         if (session != null) {
             session.removeAttribute(SESSION_CLIENTE);
+            session.removeAttribute("admin");
+            session.removeAttribute("usuario");
         }
         return Response.ok(new ApiResponse(true, "Sesión cerrada.")).build();
     }
+
 
     @GET
     @Path("me")
