@@ -2,43 +2,70 @@ package com.appsweb.swappysource.filters;
 
 import DTOs.UsuarioLogueadoDTO;
 import Enumeradores.Rol;
-import jakarta.servlet.*;
+import entidades.Usuario;
+import jakarta.servlet.Filter;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
 import jakarta.servlet.annotation.WebFilter;
-import jakarta.servlet.http.*;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(filterName = "AdminAuthFilter", urlPatterns = {
-        "/panelAdministrador.jsp",
-        "/administrarUsuario.jsp",
-        "/gestionarPedidos.jsp",
-        "/gestionarProductos.jsp",
-        "/gestionarResenas.jsp",
-        "/AdministrativeServlet"
-})
+@WebFilter(
+        filterName = "AdminAuthFilter",
+        urlPatterns = {
+            "/panelAdministrador.jsp",
+            "/administrarUsuario.jsp",
+            "/gestionarProductos.jsp",
+            "/gestionarPedidos.jsp",
+            "/gestionarResenas.jsp"
+        }
+)
 public class AdminAuthFilter implements Filter {
 
+    private boolean esAdmin(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+
+        if (obj instanceof UsuarioLogueadoDTO) {
+            UsuarioLogueadoDTO dto = (UsuarioLogueadoDTO) obj;
+            return dto.getRol() == Rol.ADMIN;
+        }
+
+        if (obj instanceof Usuario) {
+            Usuario u = (Usuario) obj;
+            return u.getRol() == Rol.ADMIN;
+        }
+
+        return false;
+    }
+
     @Override
-    public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
 
-        HttpServletRequest request = (HttpServletRequest) req;
-        HttpServletResponse response = (HttpServletResponse) res;
+        HttpServletRequest req = (HttpServletRequest) request;
+        HttpServletResponse res = (HttpServletResponse) response;
 
-        // Permitimos login y recursos públicos sin bloquear
-        String path = request.getServletPath();
-        if (path.equals("/LoginServlet") || path.equals("/iniciarSesion.jsp") || path.startsWith("/styles")) {
-            chain.doFilter(req, res);
+        HttpSession session = req.getSession(false);
+        if (session == null) {
+            res.sendRedirect(req.getContextPath() + "/iniciarSesion.jsp");
             return;
         }
 
-        HttpSession session = request.getSession(false);
-        UsuarioLogueadoDTO user = (session == null) ? null : (UsuarioLogueadoDTO) session.getAttribute("usuario");
+        Object admin = session.getAttribute("admin");
+        Object usuario = session.getAttribute("usuario");
+        Object usuarioLogueado = session.getAttribute("usuarioLogueado");
 
-        if (user == null || user.getRol() != Rol.ADMIN) {
-            response.sendRedirect(request.getContextPath() + "/iniciarSesion.jsp");
+        if (esAdmin(admin) || esAdmin(usuario) || esAdmin(usuarioLogueado)) {
+            chain.doFilter(request, response);
             return;
         }
 
-        chain.doFilter(req, res);
+        res.sendRedirect(req.getContextPath() + "/iniciarSesion.jsp");
     }
 }

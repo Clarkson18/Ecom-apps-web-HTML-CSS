@@ -25,7 +25,7 @@
 
                 <form id="formLogin">
                     <label for="correo-electronico">Correo: </label>
-                    <input id="correo-electronico" name="correo" class="correo-electronico" type="text" placeholder="correo@dominio.com" required autocomplete="off"/>
+                    <input id="correo-electronico" name="correo" class="correo-electronico" type="text" placeholder="" required autocomplete="off"/>
 
                     <label for="passwordUsuario">Contraseña: </label>
                     <input id="passwordUsuario" name="password" type="password" required autocomplete="off"/>
