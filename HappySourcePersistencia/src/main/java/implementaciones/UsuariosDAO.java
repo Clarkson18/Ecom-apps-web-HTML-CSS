@@ -24,6 +24,7 @@ public class UsuariosDAO implements IUsuariosDAO {
     private final String CAMPO_TELEFONO = "telefono";
     private final String CAMPO_DIRECCION = "direcciones";
     private final String CAMPO_ROL = "rol";
+    private final String CAMPO_ID = "_id";
 
     private static UsuariosDAO instance;
 
@@ -83,20 +84,18 @@ public class UsuariosDAO implements IUsuariosDAO {
         try {
             MongoCollection<Usuario> coleccion = crearConexion();
 
-            // Armamos el update sin password (por defecto)
+            if (usuario.getId() == null) {
+                throw new RuntimeException("No se puede actualizar sin ID.");
+            }
+
             Document update = new Document()
                     .append(CAMPO_NOMBRES, usuario.getNombre())
+                    .append(CAMPO_CORREO, usuario.getCorreo())
                     .append(CAMPO_TELEFONO, usuario.getTelefono())
                     .append(CAMPO_DIRECCION, usuario.getDirecciones())
                     .append(CAMPO_ROL, usuario.getRol());
-
-            // Solo si viene una contraseña nueva (texto plano), la hasheamos y actualizamos
             if (usuario.getPassword() != null && !usuario.getPassword().isBlank()) {
-                try {
-                    update.append(CAMPO_CONTRASEÑA, utils.PassManager.hashPassword(usuario.getPassword()));
-                } catch (Exception e) {
-                    throw new RuntimeException("No se pudo hashear la contraseña", e);
-                }
+                update.append(CAMPO_CONTRASEÑA, usuario.getPassword());
             }
 
             Document updateDoc = new Document("$set", update);
@@ -106,13 +105,13 @@ public class UsuariosDAO implements IUsuariosDAO {
                     .returnDocument(ReturnDocument.AFTER);
 
             Usuario actualizado = coleccion.findOneAndUpdate(
-                    Filters.eq(CAMPO_CORREO, usuario.getCorreo()),
+                    Filters.eq(CAMPO_ID, usuario.getId()),
                     updateDoc,
                     opciones
             );
 
             if (actualizado == null) {
-                throw new RuntimeException("No se encontró usuario con correo: " + usuario.getCorreo());
+                throw new RuntimeException("No se encontró usuario con ID: " + usuario.getId());
             }
 
             return actualizado;

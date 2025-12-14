@@ -7,39 +7,39 @@ body{
     margin: 0px;
 }
 .landingPage{
-  display: grid;
-  grid-row: auto auto auto;
-  margin: 0px;
-  width: 100%;
+    display: grid;
+    grid-row: auto auto auto;
+    margin: 0px;
+    width: 100%;
 }
 
 .barraNavegacion{
-  background-color: var(--happySourceGreen);
-  display: flex;
-  flex-direction:row;
-  flex-wrap: wrap;
-  padding-left: 20px;
-  width: 100%;
-  height: 7.5%;
+    background-color: var(--happySourceGreen);
+    display: flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    padding-left: 20px;
+    width: 100%;
+    height: 7.5%;
 }
 
 .barraNavegacion #logo{
-  font-family: "Inter";
-  font-weight: 900;
-  color: #00812D;
-  font-size: 2em;
-  margin-right: 50%;
-  margin-top: 20px;
+    font-family: "Inter";
+    font-weight: 900;
+    color: #00812D;
+    font-size: 2em;
+    margin-right: 50%;
+    margin-top: 20px;
 }
 .mainLink{
-text-decoration: none;
-color: #00812D;
+    text-decoration: none;
+    color: #00812D;
 }
 .barraNavegacion>ul{
-      padding-top: 10px;
-      display: flex;
-      flex-direction:row;
-      flex-wrap: no-wrap;
+    padding-top: 10px;
+    display: flex;
+    flex-direction:row;
+    flex-wrap: no-wrap;
 }
 
 .barraNavegacion>ul>a{
@@ -56,237 +56,238 @@ color: #00812D;
 }
 
 .bannerContainer{
-  display: flex;
-  flex-direction: row;
-  margin:5% 0px 0px 10px;
+    display: flex;
+    flex-direction: row;
+    margin:5% 0px 0px 10px;
 }
 
 .bannerContainer>.subtitulo{
-  margin:5% 10px 0px 10px;
-  font-size: 1.1em;
-  display: column;
+    margin:5% 10px 0px 10px;
+    font-size: 1.1em;
+    display: column;
 }
 .bannerContainer>.subtitulo>p{
-  font-size: 1em;
-  color: gray;
+    font-size: 1em;
+    color: gray;
 }
 
 .bannerContainer>.banner>img{
-  width: 100%;
-  margin: 0px;
+    width: 100%;
+    margin: 0px;
 }
 
 .bannerContainer>.subtitulo>.botones>button{
-  margin-top: 5px;
-  padding: 8px 8px 8px 8px;
-  border-radius: 7px;
-  font-size: 0.8em;
-  border: 1px solid;
-  margin-right: 5px;
+    margin-top: 5px;
+    padding: 8px 8px 8px 8px;
+    border-radius: 7px;
+    font-size: 0.8em;
+    border: 1px solid;
+    margin-right: 5px;
 }
 .botones>#botonCatalogo{
-  background-color: #6CB987;
-  color: white;
-  border: #6CB987;
+    background-color: #6CB987;
+    color: white;
+    border: #6CB987;
 }
 .botones>#botonCarrito{
-  background-color: #FFF9F1;
-  color: #4E4E4E;
-  border: 1.5px solid gray;
+    background-color: #FFF9F1;
+    color: #4E4E4E;
+    border: 1.5px solid gray;
 }
 
 .muestraCatalogo{
-  display: flex;
-  flex-direction: column;
-  margin: 4% 0px 0px 3%;
+    display: flex;
+    flex-direction: column;
+    margin: 4% 0px 0px 3%;
 }
 .muestraCatalogo>.titulo{
-  color: #00812D;
-  font-size: 1.2em;
+    color: #00812D;
+    font-size: 1.2em;
 }
 
 .muestraCatalogo>.subtitulo>p{
-  margin-top: 0px;
-  color: gray;
-  font-size: 1em;
+    margin-top: 0px;
+    color: gray;
+    font-size: 1em;
 }
 
 .muestraCatalogo>.subtitulo>p>strong{
-  color: #D90346;
+    color: #D90346;
 }
 
 .muestraCatalogo>.imagenesCatalogo{
-  margin: 3% 0px 0px 10%;
-  display: flex;
-  flex-direction: row;
-  color: #D90346;
+    margin: 3% 0px 0px 10%;
+    display: flex;
+    flex-direction: row;
+    color: #D90346;
 }
 
 .muestraCatalogo img{
- width: 300px;
- height: 300px;
- border-radius: 10px;
- margin-right: 20px;
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    margin-right: 20px;
 }
 .muestraCatalogo img:hover {
-  transition: filter 0.3s ease;
-  border-radius: 10px;
-  filter: brightness(60%);
+    transition: filter 0.3s ease;
+    border-radius: 10px;
+    filter: brightness(60%);
 }
 
 .catalogoBody{
-  margin: 0px;
+    margin: 0px;
 }
 
 .footer{
-  margin-top: 30px;
+    margin-top: 30px;
 }
 
 /*productos showup*/
 
 .producto>img, .displayProducto>img{
-  width: 330px;
-  max-height: 330px;
+    width: 330px;
+    max-height: 330px;
 }
 
 .displayProducto>img:hover {
-  transition: filter 0.3s ease;
-  filter: brightness(60%);
+    transition: filter 0.3s ease;
+    filter: brightness(60%);
 }
 
 /*Seccion de catalogo articulos */
 
 .CatalogoSubtitulo>h1{
-  margin-top: 3%;
-  font-weight: 900;
-  font-size: 2.3em;
-  padding-left: 34%;
+    margin-top: 3%;
+    font-weight: 900;
+    font-size: 2.3em;
+    padding-left: 34%;
 }
 .CatalogoSubtitulo>p{
-  color: gray;
-  padding-left: 40%;
+    color: gray;
+    padding-left: 40%;
 }
 .categoria{
-  margin: 7% 5% 7% 6%;;
+    margin: 7% 5% 7% 6%;
+    ;
 }
 .categoria>h2{
-  width: 100%;
-  padding: 15px 7px 15px 7px;
-  font-weight: 900;
+    width: 100%;
+    padding: 15px 7px 15px 7px;
+    font-weight: 900;
 }
 .divisionSeccionVitaminas{
-  background-color: #B0E1FF;
-  color: #407BDA;
+    background-color: #B0E1FF;
+    color: #407BDA;
 }
 .divisionProteina{
-  background-color: #BFB0FF;
-  color: #8040DA;
+    background-color: #BFB0FF;
+    color: #8040DA;
 }
 .divisionSeccionVitaminas{
-  background-color: #B0E1FF;
-  color: #407BDA;
+    background-color: #B0E1FF;
+    color: #407BDA;
 }
 .divisionGummies{
-  background-color: #FFFCB0;
-  color: #C18D70;
+    background-color: #FFFCB0;
+    color: #C18D70;
 }
 .productos {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 .producto{
-  background-color: white;
-  margin: 5% 20px auto auto;
+    background-color: white;
+    margin: 5% 20px auto auto;
 }
 .producto>p, .producto>h3{
-  padding-left: 5%;
+    padding-left: 5%;
 }
 
 /*footer*/
 
 footer {
-  background-color: #E2FFE2;
-  color: #00812D;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 30px 0;
-  font-size: 0.9em;
-  margin-top: 30px;
+    background-color: #E2FFE2;
+    color: #00812D;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 0;
+    font-size: 0.9em;
+    margin-top: 30px;
 }
 
 footer .contenidoFooter {
-  width: 80%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  text-align: left;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
 }
 
 .footerSection{
-  margin: 10px 20px;
-  min-width: 200px;
+    margin: 10px 20px;
+    min-width: 200px;
 }
 
 .footerSection h4 {
-  font-weight: 900;
-  margin-bottom: 10px;
-  font-size: 1.1em;
+    font-weight: 900;
+    margin-bottom: 10px;
+    font-size: 1.1em;
 }
 
 .footerSection a {
-  color: #00812D;
-  text-decoration: none;
-  display: block;
-  margin: 4px 0;
+    color: #00812D;
+    text-decoration: none;
+    display: block;
+    margin: 4px 0;
 }
 
 .footerSection a:hover {
-  color: #6CB987;
-  transition: 0.3s;
+    color: #6CB987;
+    transition: 0.3s;
 }
 
 footer .social-icons {
-  margin-top: 10px;
-  display: inline;
+    margin-top: 10px;
+    display: inline;
 }
 
 footer .social-icons a {
-  color: #00812D;
-  display: flex;
-  flex-direction: row;
-  margin-right: 10px;
-  font-size: 1.2em;
-  text-decoration: none;
+    color: #00812D;
+    display: flex;
+    flex-direction: row;
+    margin-right: 10px;
+    font-size: 1.2em;
+    text-decoration: none;
 }
 
 footer .social-icons a:hover {
-  color: #6CB987;
-  transition: 0.3s;
+    color: #6CB987;
+    transition: 0.3s;
 }
 
 footer .copyright {
-  margin-top: 20px;
-  font-size: 0.8em;
-  color: gray;
-  text-align: center;
-  width: 100%;
+    margin-top: 20px;
+    font-size: 0.8em;
+    color: gray;
+    text-align: center;
+    width: 100%;
 }
 
 /* pantallas pequeñas*/
 @media (max-width: 600px) {
-  .footer-content {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
 }
 
-  .categoriaProducto{
+.categoriaProducto{
     background-color: #BFB0FF;
     width: 100%;
     color: #3D2888;
@@ -295,8 +296,8 @@ footer .copyright {
     padding: 5px 0px 5px 0px;
     display: flex;
     justify-content: center;
-  }
-  .productoContainer {
+}
+.productoContainer {
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -305,54 +306,54 @@ footer .copyright {
     margin: 80px auto 0px auto;
     padding: 40px;
     max-width: 1100px;
-  }
+}
 
-  .productoImagen img {
+.productoImagen img {
     width: 500px;
-  }
+}
 
-  .productoInfo {
+.productoInfo {
     flex: 1;
     min-width: 300px;
     display: flex;
     flex-direction: column;
-  }
+}
 
-  .productoInfo h1 {
+.productoInfo h1 {
     font-size: 2.5em;
     margin: 15px 0 5px;
-  }
+}
 
-  .descripcion {
+.descripcion {
     color: #666;
     font-size: 1em;
-  }
+}
 
-  .precio {
+.precio {
     font-size: 1.2em;
     font-weight: 600;
     color: #6CB987;
     margin: 20px 0;
-  }
-  .precioG {
+}
+.precioG {
     font-size: 3em;
     font-weight: 700;
     color: #6CB987;
     margin: 20px 0;
-  }
+}
 
-  /* Botones */
-  .botonesProducto {
+/* Botones */
+.botonesProducto {
     display: flex;
     flex-direction: column;
     gap: 15px;
     margin-bottom: 25px;
-  }
-  .botonesProducto button{
+}
+.botonesProducto button{
     width: 70%;
-  }
+}
 
-  .btnComprar {
+.btnComprar {
     background-color: #6CB987;
     color: #fff;
     border: none;
@@ -360,9 +361,9 @@ footer .copyright {
     font-weight: bold;
     font-size: 1em;
     border-radius: 50px;
-  }
+}
 
-  .btnAgregar {
+.btnAgregar {
     background-color: #407BDA;
     color: white;
     border: none;
@@ -371,80 +372,86 @@ footer .copyright {
     font-weight: bold;
     font-size: 1em;
     border-radius: 50px;
-  }
+}
 
-  button:hover {
+button:hover {
     transform: translateY(-2px);
     transition: 0.3s;
     cursor: pointer;
-  }
+}
 
-  .btnAgregar:hover {
+.btnAgregar:hover {
     background-color: #B0D4FF;
     transform: translateY(-2px);
-  }
+}
 
-  .reviews {
+.reviews {
     background-color: #FFF4DC;
     padding: 15px 20px;
     color: #5C4723;
-  }
+}
 
-  .reviews h4 {
+.reviews h4 {
     margin-top: 0;
     font-weight: 800;
     font-size: 1.1em;
     color: #5C4723;
-  }
+}
 
-  .beneficios {
+.beneficios {
     background-color: #fff;
     max-width: 33%;
     padding: 40px;
     line-height: 1.6;
     margin-left: 7%;
-  }
+}
 
-  .beneficios h3 {
+.beneficios h3 {
     color: #8A6E37;
     font-size: 1.3em;
     margin-bottom: 10px;
-  }
+}
 
-  /* RESPONIVO */
-  @media (max-width: 900px) {
+/* RESPONIVO */
+@media (max-width: 900px) {
     .productoContainer {
-      flex-direction: column;
-      text-align: center;
-      padding: 30px;
+        flex-direction: column;
+        text-align: center;
+        padding: 30px;
     }
 
     .productoImagen img {
-      width: 80%;
-      max-width: 300px;
+        width: 80%;
+        max-width: 300px;
     }
 
     .productoInfo {
-      align-items: center;
+        align-items: center;
     }
 
     .botonesProducto {
-      flex-direction: column;
-      width: 100%;
+        flex-direction: column;
+        width: 100%;
     }
 
     .btnComprar, .btnAgregar {
-      width: 100%;
+        width: 100%;
     }
 
     .beneficios {
-      text-align: center;
-      padding: 25px;
+        text-align: center;
+        padding: 25px;
     }
 
     .contenidoFooter {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .nav-welcome{
+        font-weight: 700;
+        color: var(--darkGreen);
+        margin-right: 16px;
     }
 }

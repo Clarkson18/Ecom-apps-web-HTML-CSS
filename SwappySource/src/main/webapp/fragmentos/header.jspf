@@ -1,11 +1,42 @@
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.lang.reflect.Method"%>
 
-        <nav class="barraNavegacion">
-          <h2 id="logo"><a href="index.jsp" class="mainLink">Happy Source</a></h2>
-          <ul>
-            <a href="./gestionarPedidos.jsp" id="op1">Mis pedidos</a>
-            <a href="./carrito.jsp" id="op2">Carrito</a>
-            <a href="./administrarUsuario.jsp" id="op2">Perfil</a>
-          </ul>
-        </nav>
+<%!
+    private String getNombreSesion(Object u) {
+        if (u == null) {
+            return "";
+        }
+        try {
+            Method m = u.getClass().getMethod("getNombre");
+            Object r = m.invoke(u);
+            return r == null ? "" : String.valueOf(r);
+        } catch (Exception e) {
+            return "";
+        }
+    }
+%>
+
+<%
+    Object u = session.getAttribute("usuarioLogueado");
+    if (u == null) {
+        u = session.getAttribute("usuario");
+    }
+    if (u == null) {
+        u = session.getAttribute("cliente");
+    }
+    String nombreUsuario = getNombreSesion(u);
+%>
+
+<nav class="barraNavegacion">
+    <h2 id="logo"><a href="index.jsp" class="mainLink">Happy Source</a></h2>
+    <ul>
+        <a href="./gestionarPedidos.jsp" id="op1">Mis pedidos</a>
+        <a href="./carrito.jsp" id="op2">Carrito</a>
+        <a href="./perfil.jsp" id="op2">Perfil</a>
+        <% if (nombreUsuario != null && !nombreUsuario.isBlank()) {%>
+        <span style="margin-left: 20px; font-weight: 500; color: #0c4b10;">
+            Bienvenido, <%= nombreUsuario%>
+        </span>
+        <% }%>
+    </ul>
+</nav>
