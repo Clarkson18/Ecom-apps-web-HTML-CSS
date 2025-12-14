@@ -4,64 +4,83 @@
     Author     : vv094, Abril Islas
 --%>
 
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="es" dir="ltr">
+<html lang="es">
     <head>
-        <meta charset="utf-8">
+        <meta charset="UTF-8" />
         <title>Happy Source | Iniciar sesión</title>
-        <link rel="stylesheet" href="./styles/forms.css">
+        <link rel="icon" type="image/png" sizes="32x32" href="./assets/logoHS.png">
+        <link rel="stylesheet" href="./styles/styles_login.css">
     </head>
 
-    <body class="iniciarSesion">
+    <body>
 
-        <div class="contenedor-principal">
-            <div class="contenido">
-                <h2>Iniciar sesión</h2>
-                <h4>Ingresa tus credenciales</h4>
+        <header class="hs-topbar">
+            <a class="brand" href="index.jsp">Happy Source</a>
+            <div class="spacer"></div>
+            <nav class="links">
+                <a href="gestionarPedidos.jsp">Mis Pedidos</a>
+                <a href="index.jsp">Inicio</a>
+            </nav>
+        </header>
 
-                <div id="msg" style="display:none; margin: 10px 0; padding: 10px 12px; border-radius: 10px; font-weight: 700;"></div>
+        <main class="hs-login-wrap">
+            <section class="hs-login-card">
+                <div class="hs-login-header">
+                    <h1>Iniciar sesión</h1>
+                </div>
+                <div class="hs-divider"></div>
 
-                <form id="formLogin">
-                    <label for="correo-electronico">Correo: </label>
-                    <input id="correo-electronico" name="correo" class="correo-electronico" type="text" placeholder="" required autocomplete="off"/>
+                <div class="hs-login-content">
 
-                    <label for="passwordUsuario">Contraseña: </label>
-                    <input id="passwordUsuario" name="password" type="password" required autocomplete="off"/>
+                    <!-- Icono usuario -->
+                    <svg class="hs-user-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill="currentColor"
+                          d="M12 12a4 4 0 1 0-4-4a4 4 0 0 0 4 4Zm0 2c-4.42 0-8 2.01-8 4.5V20h16v-1.5c0-2.49-3.58-4.5-8-4.5Z"/>
+                    </svg>
 
-                    <a href="cambiar_password">¿Has olvidado tu contraseña?</a>
+                    <div id="msg" class="hs-msg"></div>
 
-                    <button type="submit" class="botones">Iniciar sesión</button>
-                </form>
+                    <!-- Form -->
+                    <form id="formLogin" class="hs-form" autocomplete="off">
+                        <div class="hs-row">
+                            <label for="correo">Correo</label>
+                            <input id="correo" name="correo" type="email" required>
+                        </div>
 
-                <h4>¿No tienes una cuenta? <a href="registrarUsuario.jsp">Crea una aquí</a></h4>
-            </div>
-        </div>
+                        <div class="hs-row">
+                            <label for="password">Contraseña</label>
+                            <input id="password" name="password" type="password" required>
+                        </div>
+
+                        <div class="hs-actions">
+                            <button class="hs-btn" type="submit">Iniciar Sesión</button>
+                        </div>
+
+                        <div class="hs-links" style="margin-top: 10px; font-weight: 700; font-size: 13px;">
+                            ¿No tienes una cuenta? <a href="registrarUsuario.jsp" style="color:#1f7a3f; font-weight: 900; text-decoration:none;">Regístrate</a>
+                        </div>
+
+                </div>
+            </section>
+        </main>
 
         <script>
-            (() => {
+            (function () {
                 const form = document.getElementById("formLogin");
                 const msg = document.getElementById("msg");
 
-                const showMsg = (text, ok) => {
-                    msg.style.display = "block";
+                function showMsg(text, ok) {
                     msg.textContent = text;
-                    msg.style.background = ok ? "#E2FFE2" : "#FFE2E2";
-                    msg.style.border = ok ? "1px solid #6CB987" : "1px solid #D90346";
-                    msg.style.color = "#111";
-                };
+                    msg.className = "hs-msg " + (ok ? "ok" : "error");
+                }
 
                 form.addEventListener("submit", async (e) => {
                     e.preventDefault();
 
-                    const correo = document.getElementById("correo-electronico").value.trim();
-                    const password = document.getElementById("passwordUsuario").value;
-
-                    if (!correo || !password) {
-                        showMsg("Correo y contraseña son obligatorios.", false);
-                        return;
-                    }
+                    const correo = document.getElementById("correo").value.trim();
+                    const password = document.getElementById("password").value;
 
                     try {
                         const res = await fetch("resources/clientes/login", {
@@ -78,7 +97,10 @@
                         }
 
                         showMsg("Sesión iniciada. Redirigiendo...", true);
-                        setTimeout(() => window.location.href = data.redirect, 450);
+                        const redirect = data.redirect || "catalogo.jsp";
+                        setTimeout(() => {
+                            window.location.href = redirect;
+                        }, 250);
 
                     } catch (err) {
                         showMsg("Error de conexión. Intenta de nuevo.", false);
