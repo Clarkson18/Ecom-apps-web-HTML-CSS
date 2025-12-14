@@ -12,6 +12,7 @@
         <title>Happy Source | Iniciar sesión</title>
         <link rel="icon" type="image/png" sizes="32x32" href="./assets/logoHS.png">
         <link rel="stylesheet" href="./styles/styles_login.css">
+        <script src="./scripts/iniciarSesion.js"></script>
     </head>
 
     <body>
@@ -65,49 +66,5 @@
                 </div>
             </section>
         </main>
-
-        <script>
-            (function () {
-                const form = document.getElementById("formLogin");
-                const msg = document.getElementById("msg");
-
-                function showMsg(text, ok) {
-                    msg.textContent = text;
-                    msg.className = "hs-msg " + (ok ? "ok" : "error");
-                }
-
-                form.addEventListener("submit", async (e) => {
-                    e.preventDefault();
-
-                    const correo = document.getElementById("correo").value.trim();
-                    const password = document.getElementById("password").value;
-
-                    try {
-                        const res = await fetch("resources/clientes/login", {
-                            method: "POST",
-                            headers: {"Content-Type": "application/json"},
-                            body: JSON.stringify({correo, password})
-                        });
-
-                        const data = await res.json().catch(() => ({}));
-
-                        if (!res.ok || data.ok !== true) {
-                            showMsg(data.message || "No se pudo iniciar sesión.", false);
-                            return;
-                        }
-
-                        showMsg("Sesión iniciada. Redirigiendo...", true);
-                        const redirect = data.redirect || "catalogo.jsp";
-                        setTimeout(() => {
-                            window.location.href = redirect;
-                        }, 250);
-
-                    } catch (err) {
-                        showMsg("Error de conexión. Intenta de nuevo.", false);
-                    }
-                });
-            })();
-        </script>
-
     </body>
 </html>
