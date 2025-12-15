@@ -16,7 +16,7 @@ public class Producto {
 
     private ObjectId id;
     private String nombre;
-    private String desripcionProducto;
+    private String descripcionProducto;
     private double precio;
     private int cantidadExistencia;
     private Categoria categoria;
@@ -44,12 +44,12 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public String getDesripcionProducto() {
-        return desripcionProducto;
+    public String getDescripcionProducto() {
+        return descripcionProducto;
     }
 
-    public void setDesripcionProducto(String desripcionProducto) {
-        this.desripcionProducto = desripcionProducto;
+    public void setDescripcionProducto(String descripcionProducto) {
+        this.descripcionProducto = descripcionProducto;
     }
 
     public double getPrecio() {

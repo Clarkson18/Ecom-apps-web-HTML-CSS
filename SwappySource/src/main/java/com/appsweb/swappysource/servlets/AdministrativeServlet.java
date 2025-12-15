@@ -105,7 +105,7 @@ public class AdministrativeServlet extends HttpServlet {
                 Producto p = new Producto();
                 p.setId(new ObjectId());
                 p.setNombre(request.getParameter("nombre"));
-                p.setDesripcionProducto(request.getParameter("descripcion"));
+                p.setDescripcionProducto(request.getParameter("descripcion"));
 
                 p.setPrecio(Double.parseDouble(request.getParameter("precio")));
                 p.setCantidadExistencia(Integer.parseInt(request.getParameter("cantidad")));

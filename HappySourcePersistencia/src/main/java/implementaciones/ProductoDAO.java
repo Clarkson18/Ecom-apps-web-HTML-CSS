@@ -20,11 +20,11 @@ import entidades.Producto;
 public class ProductoDAO implements IProductoDAO {
 
     private final String NOMBRE_COLECCION = "Productos";
-    private final String CAMPO_NOMBRES = "nombres";
-    private final String CAMPO_DESCRIPCION = "descripcion";
+    private final String CAMPO_NOMBRE = "nombre";
+    private final String CAMPO_DESCRIPCION = "descripcionProducto";
     private final String CAMPO_PRECIO = "precio";
     private final String CAMPO_CATEGORIA = "categoria";
-    private final String CAMPO_CANTIDAD = "cantidad";
+    private final String CAMPO_CANTIDAD = "cantidadExistencia";
     @Override
     public List<Producto> listaProductos() {
         MongoCollection<Producto> coleccion = crearConexion();
@@ -57,7 +57,7 @@ public class ProductoDAO implements IProductoDAO {
     @Override
     public Producto agregarProducto(Producto producto) {
         MongoCollection coleccion = crearConexion();
-
+        if (producto.getId() == null) producto.setId(new ObjectId());
         coleccion.insertOne(producto);
 
         return producto;
@@ -65,14 +65,14 @@ public class ProductoDAO implements IProductoDAO {
 
     @Override
     public Producto actualizarProducto(Producto producto) {
-        try{
+        
             FindOneAndUpdateOptions opciones = new FindOneAndUpdateOptions()
                     .upsert(false)
                     .returnDocument(ReturnDocument.AFTER);
 
             Document updateSet = new Document();
-            updateSet.append(CAMPO_NOMBRES, producto.getNombre());
-            updateSet.append(CAMPO_DESCRIPCION, producto.getDesripcionProducto());
+            updateSet.append(CAMPO_NOMBRE, producto.getNombre());
+            updateSet.append(CAMPO_DESCRIPCION, producto.getDescripcionProducto());
             updateSet.append(CAMPO_PRECIO, producto.getPrecio());
             updateSet.append(CAMPO_CATEGORIA, producto.getCategoria());
             updateSet.append(CAMPO_CANTIDAD, producto.getCantidadExistencia());
@@ -85,16 +85,13 @@ public class ProductoDAO implements IProductoDAO {
 
             Producto productoActualizado = coleccion.findOneAndUpdate(filtro, update, opciones);
 
-            if (productoActualizado == null) {
+            if (productoActualizado == null) 
                 throw new RuntimeException("No se encontró el producto con ID: " + producto.getId());
-            }
+            
 
             return productoActualizado;
 
-        } catch (Exception e) {
-            System.err.println("Error al actualizar producto: " + e.getMessage());
-            throw new RuntimeException("Error de base de datos", e);
-        }
+        
     }
 
     @Override

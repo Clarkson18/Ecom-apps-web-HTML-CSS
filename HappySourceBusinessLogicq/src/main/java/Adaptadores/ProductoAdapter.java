@@ -18,7 +18,7 @@ public class ProductoAdapter {
         ProductoDTO dto = new ProductoDTO();
         dto.setId(producto.getId().toString());
         dto.setNombre(producto.getNombre());
-        dto.setDesripcionProducto(producto.getDesripcionProducto());
+        dto.setDesripcionProducto(producto.getDescripcionProducto());
         dto.setPrecio(producto.getPrecio());
         dto.setCantidadExistencia(producto.getCantidadExistencia());
         dto.setCategoria(producto.getCategoria());
@@ -29,7 +29,7 @@ public class ProductoAdapter {
         Producto producto = new Producto();
         producto.setId(new org.bson.types.ObjectId(dto.getId()));
         producto.setNombre(dto.getNombre());
-        producto.setDesripcionProducto(dto.getDesripcionProducto());
+        producto.setDescripcionProducto(dto.getDesripcionProducto());
         producto.setPrecio(dto.getPrecio());
         producto.setCantidadExistencia(dto.getCantidadExistencia());
         producto.setCategoria(dto.getCategoria());
