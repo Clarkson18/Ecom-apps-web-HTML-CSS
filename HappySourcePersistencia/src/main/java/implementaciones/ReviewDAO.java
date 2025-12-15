@@ -83,4 +83,24 @@ public class ReviewDAO implements IReviewDAO {
         MongoDatabase db = ConexionMongoDB.getConexion();
         return db.getCollection(NOMBRE_COLECCION, Review.class);
     }
+
+    public List<Review> listarAprobadasPorProducto(ObjectId productoId) {
+        MongoCollection<Review> col = crearConexion();
+        return col.find(
+                Filters.and(
+                        Filters.eq("productoId", productoId),
+                        Filters.eq("estado", EstadoReview.APROBADA.name())
+                )
+        ).into(new ArrayList<>());
+    }
+
+    public List<Review> listarPorProductoYCorreo(ObjectId productoId, String correoUsuario) {
+        MongoCollection<Review> col = crearConexion();
+        return col.find(
+                Filters.and(
+                        Filters.eq("productoId", productoId),
+                        Filters.eq("correoUsuario", correoUsuario)
+                )
+        ).into(new ArrayList<>());
+    }
 }

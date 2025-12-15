@@ -3,54 +3,74 @@ abrilislas --%> <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8" />
-    <title>Happy Source | Producto</title>
-    <link rel="stylesheet" href="./styles/styles.css" />
-    <%@include file="./fragmentos/header.jspf" %>
-  </head>
+    <head>
+        <meta charset="utf-8" />
+        <title>Happy Source | Producto</title>
+        <link rel="stylesheet" href="./styles/styles.css" />
+        <%@include file="./fragmentos/header.jspf" %>
 
-  <body>
-    <header class="categoriaProducto"><h3>Proteína en polvo</h3></header>
+        <script>
+        window.API_BASE = "<%= request.getContextPath()%>/resources";
+        </script>
 
-    <section class="productoContainer">
-      <div class="productoImagen">
-        <img
-          src="https://freesoul.com/cdn/shop/articles/Protein_Reformulation_e957be15-e9ed-4b48-8afa-907731251fab.jpg?v=1752416671&width=684"
-          alt="Proteina free soul"
-        />
-      </div>
+        <script defer src="<%= request.getContextPath()%>/scripts/previewProducto.js"></script>  
+    </head>
 
-      <div class="productoInfo">
-        <h1>Free* SOUL proteína</h1>
-        <p class="descripcion">Proteína vegana sabor chocolate</p>
-        <p class="precioG">$248.00</p>
-        <div class="botonesProducto">
-          <button class="btnComprar">Comprar ahora</button>
-          <button class="btnAgregar">Agregar al carrito</button>
-        </div>
+    <body>
+        <header class="categoriaProducto"><h3 id="previewCategoria">Cargando...</h3></header>
 
-        <div class="reviews">
-          <h4>Reseñas</h4>
-          <p>
-            <strong>Abril Islas:</strong> Excelente proteína, la recomiendo
-            siempre.
-          </p>
-          <p>
-            <strong>José Ramón:</strong> Sabe muy bien y es fácil de disolver.
-          </p>
-        </div>
-      </div>
-    </section>
+        <section class="productoContainer">
+            <div class="productoImagen">
+                <img id="previewImg" src="" alt="Producto" />
+            </div>
 
-    <section class="beneficios">
-      <h3>Product Benefits</h3>
-      <p>
-        Nuestra proteína está potenciada con B12 y adaptógenos naturales. Mejora
-        el rendimiento, energía y recuperación muscular sin ingredientes
-        artificiales.
-      </p>
-    </section>
-    <%@include file="./fragmentos/footer.jspf" %>
-  </body>
+            <div class="productoInfo">
+                <h1 id="previewNombre">Cargando...</h1>
+                <p class="descripcion" id="previewDescripcion"></p>
+                <p class="precioG" id="previewPrecio"></p>
+                <div class="botonesProducto">
+                    <p style="margin-top:8px;">Stock: <strong><span id="previewStock"></span></strong></p>    
+                    <button class="btnComprar" id="btnComprar">Comprar ahora</button>
+                    <button class="btnAgregar" id="btnAgregarCarrito">Agregar al carrito</button>
+                </div>
+
+                <div class="reviews">
+                    <h4>Reseñas</h4>
+
+                    <div id="reviewsList"></div> 
+
+                    <form id="reviewForm" style="margin-top:12px; display:none;"> 
+                        <label style="display:block; margin-bottom:6px;">Calificación</label>
+                        <select id="reviewRating" required style="padding:8px; border-radius:10px;">
+                            <option value="5">5</option>
+                            <option value="4">4</option>
+                            <option value="3">3</option>
+                            <option value="2">2</option>
+                            <option value="1">1</option>
+                        </select>
+
+                        <label style="display:block; margin:10px 0 6px;">Comentario</label>
+                        <textarea id="reviewText" required placeholder="Escribe tu reseña..."
+                                  style="width:100%; padding:10px; border-radius:10px;"></textarea>
+
+                        <button type="submit" class="btnAgregar" style="margin-top:8px;">Publicar reseña</button>
+                    </form>
+
+                    <p id="reviewLoginMsg" style="display:none; margin-top:10px;">
+                        Inicia sesión como cliente para escribir una reseña.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="beneficios">
+            <h3>Product Benefits</h3>
+            <p>
+                Nuestra proteína está potenciada con B12 y adaptógenos naturales. Mejora
+                el rendimiento, energía y recuperación muscular sin ingredientes
+                artificiales.
+            </p>
+        </section>
+        <%@include file="./fragmentos/footer.jspf" %>
+    </body>
 </html>
