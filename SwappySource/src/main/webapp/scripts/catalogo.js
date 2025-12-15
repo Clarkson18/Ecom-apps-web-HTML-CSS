@@ -14,6 +14,14 @@ async function apiGet(url) {
     return r.json();
 }
 
+function debounce(fn, ms = 350) {
+    let t;
+    return (...args) => {
+        clearTimeout(t);
+        t = setTimeout(() => fn(...args), ms);
+    };
+}
+
 function renderCatalogo(root, productos) {
     const grupos = new Map();
     for (const p of productos) {
@@ -46,7 +54,7 @@ function renderCatalogo(root, productos) {
 
             const img = document.createElement("img");
             img.alt = p.nombre || "producto";
-            window.PLACEHOLDER_IMG = "<%= request.getContextPath()%>/assets/suplemento1.jpeg";
+            img.src = window.imageFor ? window.imageFor(p) : "";
             a.appendChild(img);
 
             const h3 = document.createElement("h3");
@@ -75,6 +83,9 @@ function renderCatalogo(root, productos) {
 (async function init() {
     const root = document.getElementById("catalogoRoot");
     const productos = await apiGet(`${window.API_BASE}/productos`);
+    const searchInput = document.getElementById("searchInput");
+    const categoriaSelect = document.getElementById("categoriaSelect");
+    const btnLimpiar = document.getElementById("btnLimpiar");
     const IMG_VIT = [
         "https://media.ulta.com/i/ulta/2550466?w=800&h=800&fmt=auto",
         "https://ethical-nutrition.com/cdn/shop/files/veganvitamind3supplementuk.png?v=1746003137",
@@ -105,7 +116,41 @@ function renderCatalogo(root, productos) {
 
         return IMG_VIT[0]; // fallback
     }
-    renderCatalogo(root, productos);
+    window.imageFor = imageFor;
+    
+    async function cargarCatalogo() {
+        const search = (searchInput?.value || "").trim();
+        const categoria = (categoriaSelect?.value || "").trim();
+
+        const params = new URLSearchParams();
+        if (search) params.set("search", search);
+        if (categoria) params.set("categoria", categoria);
+
+        const url = `${window.API_BASE}/productos${params.toString() ? "?" + params.toString() : ""}`;
+        const productos = await apiGet(url);
+
+        renderCatalogo(root, productos);
+    }
+    const recargarDebounced = debounce(() => {
+        cargarCatalogo().catch(err => {
+            console.error(err);
+            alert("No se pudo cargar el catálogo.");
+        });
+    }, 350);
+    if (searchInput) searchInput.addEventListener("input", recargarDebounced);
+    if (categoriaSelect) categoriaSelect.addEventListener("change", recargarDebounced);
+
+    if (btnLimpiar) {
+        btnLimpiar.addEventListener("click", () => {
+            if (searchInput) searchInput.value = "";
+            if (categoriaSelect) categoriaSelect.value = "";
+            cargarCatalogo().catch(err => {
+                console.error(err);
+                alert("No se pudo cargar el catálogo.");
+            });
+        });
+    }
+    await cargarCatalogo();
 })().catch(err => {
     console.error(err);
     alert("No se pudo cargar el catálogo.");
