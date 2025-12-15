@@ -33,41 +33,70 @@
                 <!-- Form agregar producto -->
                 <div class="form-card">
                     <form action="<%= request.getContextPath()%>/AdministrativeServlet" method="post">
-                        <input type="hidden" name="accion" value="addProducto"/>
+                        <c:choose> 
+                            <c:when test="${productoEdit != null}">     
+                                <input type="hidden" name="accion" value="updateProducto"/>     
+                                <input type="hidden" name="idProducto" value="${productoEdit.id}"/>
+                            </c:when>
+                            <c:otherwise>
+                                <input type="hidden" name="accion" value="addProducto"/>
+                            </c:otherwise>
+                        </c:choose>
 
                         <div class="form-grid">
                             <div class="form-field">
                                 <label>Nombre</label>
-                                <input name="nombre" type="text" required>
+                                <input name="nombre" type="text" required value="${productoEdit.nombre}">
                             </div>
 
                             <div class="form-field">
                                 <label>Descripción</label>
-                                <input name="desripcionProducto" type="text" required>
+                                <input name="descripcionProducto" type="text" required value="${productoEdit.descripcionProducto}">
                             </div>
 
                             <div class="form-field">
                                 <label>Precio</label>
-                                <input name="precio" type="number" step="0.01" required>
+                                <input name="precio" type="number" step="0.01" required value="${productoEdit.precio}">
                             </div>
 
                             <div class="form-field">
                                 <label>Cantidad</label>
-                                <input name="cantidadExistencia" type="number" required>
+                                <input name="cantidadExistencia" type="number" required value="${productoEdit.cantidadExistencia}">
                             </div>
 
                             <div class="form-field">
                                 <label>Categoría</label>
                                 <select name="categoria" required>
                                     <c:forEach var="cat" items="${categorias}">
-                                        <option>${cat}</option>
+                                        <option value="${cat}" <c:if test="${productoEdit != null && cat == productoEdit.categoria}">selected</c:if>>${cat}</option>
                                     </c:forEach>
                                 </select>
                             </div>
                         </div>
 
-                        <div class="form-actions">
-                            <button class="small-btn" type="submit">Guardar</button>
+                        <div class="form-field">
+                            <label>Imagen</label>
+                            <select name="imagen" required>
+                                <option value="suplemento1.jpeg" <c:if test="${productoEdit != null && productoEdit.imagen == 'suplemento1.jpeg'}">selected</c:if>>suplemento1.jpeg</option>
+                                <option value="suplemento2.jpeg" <c:if test="${productoEdit != null && productoEdit.imagen == 'suplemento2.jpeg'}">selected</c:if>>suplemento2.jpeg</option>
+                                <option value="suplemento3.jpeg" <c:if test="${productoEdit != null && productoEdit.imagen == 'suplemento3.jpeg'}">selected</c:if>>suplemento3.jpeg</option>
+                                <option value="gomitas.jpeg"     <c:if test="${productoEdit != null && productoEdit.imagen == 'gomitas.jpeg'}">selected</c:if>>gomitas.jpeg</option>
+                                option value="gomitas1.jpeg"    <c:if test="${productoEdit != null && productoEdit.imagen == 'gomitas1.jpeg'}">selected</c:if>>gomitas1.jpeg</option>
+                                <option value="gomitas2.jpeg"    <c:if test="${productoEdit != null && productoEdit.imagen == 'gomitas2.jpeg'}">selected</c:if>>gomitas2.jpeg</option>
+                                </select>
+                            </div>
+
+                            <div class="form-actions">
+                                <button class="small-btn" type="submit">Guardar</button>
+                            <c:choose>
+                                <c:when test="${productoEdit != null}">Actualizar</c:when>
+                                <c:otherwise>Guardar</c:otherwise>
+                            </c:choose>
+                            </button>  
+                            <c:if test="${productoEdit != null}">
+                                <a class="small-btn" style="background:#e5e7eb;color:#111;text-decoration:none;margin-left:8px;"
+                                   href="<%= request.getContextPath()%>/AdministrativeServlet?accion=getProductos">Cancelar</a>
+                            </c:if>
                         </div>
                     </form>
                 </div>
@@ -95,6 +124,10 @@
                                     <td>${p.categoria}</td>
                                     <td>
                                         <div class="row-actions">
+                                            <a class="table-btn" style="background:#F2D23C;color:#111;text-decoration:none;margin-right:8px;"
+                                               href="<%= request.getContextPath()%>/AdministrativeServlet?accion=editProducto&idProducto=${p.id}">
+                                                Editar
+                                            </a>
                                             <form action="<%= request.getContextPath()%>/AdministrativeServlet" method="post">
                                                 <input type="hidden" name="accion" value="deleteProducto"/>
                                                 <input type="hidden" name="idProducto" value="${p.id}"/>

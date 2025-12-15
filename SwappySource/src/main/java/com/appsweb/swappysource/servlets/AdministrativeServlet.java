@@ -50,6 +50,7 @@ public class AdministrativeServlet extends HttpServlet {
             case "getProductos": {
                 List<Producto> productos = persistencia.listaProductos();
                 request.setAttribute("productos", productos);
+                request.setAttribute("categorias", Arrays.asList(Categoria.values()));
                 request.getRequestDispatcher("/gestionarProductos.jsp").forward(request, response);
                 break;
             }
@@ -57,6 +58,19 @@ public class AdministrativeServlet extends HttpServlet {
                 List<entidades.Review> reviews = new implementaciones.ReviewDAO().listarReviews();
                 request.setAttribute("reviews", reviews);
                 request.getRequestDispatcher("/gestionarResenas.jsp").forward(request, response);
+                break;
+            }
+            case "editProducto": {
+                String id = request.getParameter("idProducto");
+
+                Producto productoEdit = persistencia.obtenerProductoPorId(id);
+                List<Producto> productos = persistencia.listaProductos();
+
+                request.setAttribute("productoEdit", productoEdit);
+                request.setAttribute("productos", productos);
+                request.setAttribute("categorias", Arrays.asList(Categoria.values()));
+
+                request.getRequestDispatcher("/gestionarProductos.jsp").forward(request, response);
                 break;
             }
 
@@ -105,18 +119,34 @@ public class AdministrativeServlet extends HttpServlet {
                 Producto p = new Producto();
                 p.setId(new ObjectId());
                 p.setNombre(request.getParameter("nombre"));
-                p.setDescripcionProducto(request.getParameter("descripcion"));
+                p.setDescripcionProducto(request.getParameter("descripcionProducto"));
 
                 p.setPrecio(Double.parseDouble(request.getParameter("precio")));
-                p.setCantidadExistencia(Integer.parseInt(request.getParameter("cantidad")));
+                p.setCantidadExistencia(Integer.parseInt(request.getParameter("cantidadExistencia")));
                 p.setCategoria(Categoria.valueOf(request.getParameter("categoria")));
 
+                p.setImagen(request.getParameter("imagen"));
                 persistencia.agregarProducto(p);
 
                 response.sendRedirect(request.getContextPath() + "/AdministrativeServlet?accion=getProductos");
                 break;
             }
 
+            case "updateProducto": {
+                String idProducto = request.getParameter("idProducto");
+                 Producto p = new Producto();
+                  p.setId(new ObjectId(idProducto));
+                  p.setNombre(request.getParameter("nombre"));
+                  p.setDescripcionProducto(request.getParameter("descripcionProducto"));
+                  p.setPrecio(Double.parseDouble(request.getParameter("precio")));
+                  p.setCantidadExistencia(Integer.parseInt(request.getParameter("cantidadExistencia")));
+                  p.setCategoria(Categoria.valueOf(request.getParameter("categoria")));
+                  
+                  p.setImagen(request.getParameter("imagen"));
+                  persistencia.actualizarProducto(p);
+                  response.sendRedirect(request.getContextPath() + "/AdministrativeServlet?accion=getProductos");
+                  break;
+            }
             case "deleteProducto": {
                 String idProducto = request.getParameter("idProducto");
 

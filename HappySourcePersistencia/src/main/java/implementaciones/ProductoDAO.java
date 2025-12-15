@@ -25,6 +25,7 @@ public class ProductoDAO implements IProductoDAO {
     private final String CAMPO_PRECIO = "precio";
     private final String CAMPO_CATEGORIA = "categoria";
     private final String CAMPO_CANTIDAD = "cantidadExistencia";
+    private final String CAMPO_IMAGEN = "imagen";
     @Override
     public List<Producto> listaProductos() {
         MongoCollection<Producto> coleccion = crearConexion();
@@ -76,7 +77,7 @@ public class ProductoDAO implements IProductoDAO {
             updateSet.append(CAMPO_PRECIO, producto.getPrecio());
             updateSet.append(CAMPO_CATEGORIA, producto.getCategoria());
             updateSet.append(CAMPO_CANTIDAD, producto.getCantidadExistencia());
-
+            updateSet.append(CAMPO_IMAGEN, producto.getImagen());
             Document update = new Document("$set", updateSet);
 
             MongoCollection<Producto> coleccion = crearConexion();

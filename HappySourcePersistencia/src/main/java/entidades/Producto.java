@@ -20,6 +20,7 @@ public class Producto {
     private double precio;
     private int cantidadExistencia;
     private Categoria categoria;
+    private String imagen;
 
     public Producto() {
     }
@@ -74,5 +75,13 @@ public class Producto {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+    
+    public String getImagen() { 
+        return imagen; 
+    }
+    
+    public void setImagen(String imagen) { 
+        this.imagen = imagen; 
     }
 }
