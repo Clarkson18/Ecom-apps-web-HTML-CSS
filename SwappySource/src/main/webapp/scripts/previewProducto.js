@@ -103,6 +103,30 @@ function renderReviews(listEl, reviews) {
   const elStock = document.getElementById("previewStock");
   const btnComprar = document.getElementById("btnComprar");
   const btnCarrito = document.getElementById("btnAgregarCarrito");
+  
+    if (btnCarrito) {
+        btnCarrito.addEventListener("click", async () => {
+            try {
+                await apiPost(`${window.API_BASE}/carrito/add`, {productoId: id, cantidad: 1});
+                alert("Producto agregado al carrito.");
+            } catch (e) {
+                console.error(e);
+                alert("No se pudo agregar al carrito. Revisa sesión/stock.");
+            }
+        });
+    }
+
+    if (btnComprar) {
+        btnComprar.addEventListener("click", async () => {
+            try {
+                await apiPost(`${window.API_BASE}/carrito/add`, {productoId: id, cantidad: 1});
+                location.href = `${window.CTX}/carrito.jsp`;
+            } catch (e) {
+                console.error(e);
+                alert("No se pudo comprar ahora. Revisa sesión/stock.");
+            }
+        });
+    }
 
   if (elCat) elCat.textContent = tituloCategoria(p.categoria);
   if (elImg) { elImg.src = imageFor(p); elImg.alt = p.nombre || "producto"; }

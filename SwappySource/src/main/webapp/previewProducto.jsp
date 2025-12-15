@@ -10,7 +10,8 @@ abrilislas --%> <%@page contentType="text/html" pageEncoding="UTF-8"%>
         <%@include file="./fragmentos/header.jspf" %>
 
         <script>
-        window.API_BASE = "<%= request.getContextPath()%>/resources";
+           window.API_BASE = "<%= request.getContextPath()%>/resources";
+           window.CTX = "<%= request.getContextPath()%>"; 
         </script>
 
         <script defer src="<%= request.getContextPath()%>/scripts/previewProducto.js"></script>  
